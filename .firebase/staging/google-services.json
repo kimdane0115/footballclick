@@ -12,7 +12,20 @@
           "package_name": "com.kimdane.footballclick"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "257746472366-27ob48dsvstd9a8t8qpmj2dlif4dsra9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kimdane.footballclick",
+            "certificate_hash": "27196e386b875e76adf700e7ea84e4c6eee33dfa"
+          }
+        },
+        {
+          "client_id": "257746472366-i63jfjv30f9avq3vp12723gmap541lgh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyC6xObnkTA_VJaKY62wPeRgGpXovqrip-c"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "257746472366-i63jfjv30f9avq3vp12723gmap541lgh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "257746472366-nis9odkp8hnm80lkpmuvg2jefs7dgq2j.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kimdane.footballclick"
+              }
+            }
+          ]
         }
       }
     }

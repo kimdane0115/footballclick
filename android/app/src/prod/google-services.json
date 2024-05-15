@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "257746472366",
+    "project_id": "footballclick-cb698",
+    "storage_bucket": "footballclick-cb698.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:257746472366:android:0f6a760880bf2c148a4c3f",
+        "android_client_info": {
+          "package_name": "com.kimdane.footballclick"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6xObnkTA_VJaKY62wPeRgGpXovqrip-c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
