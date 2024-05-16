@@ -1,5 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/widgets.dart';
+import 'package:footballclick/feature/2.home/presentation/widget/team_match_day_widget.dart';
+import 'package:footballclick/feature/2.home/presentation/widget/team_ranking_widget.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -19,8 +23,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.grey[300],
         appBar: AppBar(
-          title: const Text('팀명'),
+          // title: const Text('팀명'),
+          centerTitle: false,
           actions: [
             IconButton(
               onPressed: () {
@@ -32,91 +38,118 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           ],
         ),
         // body: home(),
-        body: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: body(context),
-        ),
+        body: body(context),
       ),
     );
   }
 
   Widget body(BuildContext context) {
     return SingleChildScrollView(
+      primary: false,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            '금주 일정',
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
           Container(
-            height: 150,
-            decoration: BoxDecoration(
-              color: Colors.grey[200],
-              borderRadius: BorderRadius.circular(22)
-            ),
+            height: MediaQuery.sizeOf(context).height / 2.5,
+            color: Colors.white,
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  customCalendar(),
-                  const VerticalDivider(),
-                  const Column(
-                    children: [
-                      Text(' 2024년 5월 일정'),
-                      SizedBox(height: 4,),
-                      Text(' vs team_name', style: TextStyle(color: Color(0xFFBFBFBF),),),
-                      Text(' vs team_name', style: TextStyle(color: Color(0xFFBFBFBF),),),
-                      Text(' vs team_name', style: TextStyle(color: Color(0xFFBFBFBF),),),
-                      Text(' vs team_name', style: TextStyle(fontWeight: FontWeight.bold),),
-                    ],
-                  )
-                ],
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+              child: _teamInfo(),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Container(
+              padding: const EdgeInsets.all(15),
+              height: 520,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(15),
               ),
+              child: _matchDay(),
             ),
-          ),
-          const SizedBox(height: 10,),
-          Text(
-            '전적',
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
-          Container(
-            height: 80,
-            decoration: BoxDecoration(
-              color: Colors.grey[200],
-              borderRadius: BorderRadius.circular(22)
-            ),
-          ),
-          const SizedBox(height: 10,),
-          Text(
-            '참석/불참석',
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
-          Container(
-            width: double.infinity,
-            height: 300,
-            decoration: BoxDecoration(
-              color: Colors.grey[200],
-              borderRadius: BorderRadius.circular(22)
-            ),
-            child: const Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('김동욱'),
-                  Text('김동욱'),
-                  Text('김동욱'),
-                  Text('김동욱'),
-                  Text('김동욱'),
-                  Text('김동욱'),
-                  
-                ],
-              ),
-            ),
-          ),
+          )
+          
         ],
       ),
+    );
+  }
+
+  Widget _teamInfo() {
+    return Column(
+      children: [
+        Row(
+          children: [
+            Container(
+              width: 100,
+              height: 100,
+              decoration: BoxDecoration(
+                color: Colors.yellow,
+                borderRadius: BorderRadius.circular(15),
+              ),
+            ),
+            const SizedBox(width: 15,),
+            const Text('Borussia', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 30),)
+          ],
+        ),
+        const SizedBox(height: 20,),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(
+              'Team Ranking',
+              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15),
+            ),
+            Text(
+              'SEE ALL',
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+                fontSize: 11,
+                color: Colors.grey[600],
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 20,),
+        const TeamRankingWidget(),
+      ],
+    );
+  }
+
+  Widget _matchDay() {
+    return Column(
+      // crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(
+              '5월 일정',
+              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15),
+            ),
+            Text(
+              'SEE ALL',
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+                fontSize: 11,
+                color: Colors.grey[600],
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 15,),
+        const Divider(),
+        const TeamMatchDayWidget(),
+        const Divider(),
+        const TeamMatchDayWidget(),
+        const Divider(),
+        const TeamMatchDayWidget(),
+        const Divider(),
+        const TeamMatchDayWidget(),
+        // const Expanded(child: TeamMatchDayWidget()),
+        // const Divider(),
+        // const Expanded(child: TeamMatchDayWidget()),
+      ],
     );
   }
 
