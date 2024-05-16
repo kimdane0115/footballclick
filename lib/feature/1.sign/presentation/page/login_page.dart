@@ -34,6 +34,13 @@ class LoginPage extends ConsumerWidget {
               },
               child: const Text('카카오 로그인'),
             ),
+            const SizedBox(height: 8,),
+            ElevatedButton(
+              onPressed: () {
+                const SignUpScreenRoute().push(context);
+              },
+              child: const Text('회원가입'),
+            ),
             // ElevatedButton(
             //   onPressed: () {
             //     // googlelogin();

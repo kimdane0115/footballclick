@@ -1,9 +1,8 @@
 
-
-
-
 import '../../core/constants/index.dart';
 import '../../feature/1.sign/presentation/page/login_page.dart';
+import '../../feature/1.sign/presentation/page/sign_up_admin_screen.dart';
+import '../../feature/1.sign/presentation/page/sign_up_player_screen.dart';
 import '../../feature/1.sign/presentation/page/sign_up_screen.dart';
 import '../../feature/2.home/presentation/page/home_screen.dart';
 import '../../feature/2.home/presentation/page/home_screen2.dart';
@@ -11,6 +10,8 @@ import '../../feature/2.home/presentation/page/home_screen3.dart';
 import '../../feature/2.home/presentation/page/tab_screen.dart';
 import '../../feature/3.record/presentation/page/record_screen.dart';
 import '../../feature/4.my_info/presentation/page/my_info_page.dart';
+import '../../feature/5.team/presentation/page/find_team_screen.dart';
+import '../../feature/5.team/presentation/page/register_team_screen.dart';
 import '../../splash_screen.dart';
 import 'router.dart';
 
@@ -26,8 +27,13 @@ class Routers {
   static const String record = '/record';
   static const String myInfo = '/my_info';
 
+  static const String registerTeam = '/register_team';
+  static const String findTeam = '/find_team';
+
   // 2 depth routes
   static const String signUp = 'sign_up';
+  static const String signUpAdmin = 'sign_up_admin';
+  static const String signUpPlayer = 'sign_up_player';
 }
 
 @TypedGoRoute<SplashRoute>(
@@ -45,8 +51,14 @@ class SplashRoute extends GoRouteData {
   path: Routers.login,
   routes: [
     TypedGoRoute<SignUpScreenRoute>(
-    path: Routers.signUp,
-  ),
+      path: Routers.signUp,
+    ),
+    TypedGoRoute<SignUpAdminScreenRoute>(
+      path: Routers.signUpAdmin,
+    ),
+    TypedGoRoute<SignUpPlayerScreenRoute>(
+      path: Routers.signUpPlayer,
+    ),
   ]
 )
 class LoginPageRoute extends GoRouteData {
@@ -63,6 +75,24 @@ class SignUpScreenRoute extends GoRouteData {
   @override
   Page<void> buildPage(BuildContext context, GoRouterState state) {
     return const MaterialPage(child: SignUpScreen());
+  }
+}
+
+class SignUpAdminScreenRoute extends GoRouteData {
+  const SignUpAdminScreenRoute();
+
+  @override
+  Page<void> buildPage(BuildContext context, GoRouterState state) {
+    return const MaterialPage(child: SignUpAdminScreen());
+  }
+}
+
+class SignUpPlayerScreenRoute extends GoRouteData {
+  const SignUpPlayerScreenRoute();
+
+  @override
+  Page<void> buildPage(BuildContext context, GoRouterState state) {
+    return const MaterialPage(child: SignUpPlayerScreen());
   }
 }
 
@@ -149,6 +179,34 @@ class MyInfoPageRoute extends GoRouteData {
     return const MaterialPage(
       child: MyInfoPage(),
       name: Routers.myInfo,
+    );
+  }
+}
+
+@TypedGoRoute<RegisterTeamScreenRoute>(
+  path: Routers.registerTeam,
+)
+class RegisterTeamScreenRoute extends GoRouteData {
+  const RegisterTeamScreenRoute();
+  @override
+  Page<void> buildPage(BuildContext context, GoRouterState state) {
+    return const MaterialPage(
+      child: RegisterTeamScreen(),
+      name: Routers.registerTeam,
+    );
+  }
+}
+
+@TypedGoRoute<FindTeamScreenRoute>(
+  path: Routers.findTeam,
+)
+class FindTeamScreenRoute extends GoRouteData {
+  const FindTeamScreenRoute();
+  @override
+  Page<void> buildPage(BuildContext context, GoRouterState state) {
+    return const MaterialPage(
+      child: FindTeamScreen(),
+      name: Routers.findTeam,
     );
   }
 }
