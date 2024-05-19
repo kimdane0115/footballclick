@@ -50,7 +50,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            height: MediaQuery.sizeOf(context).height / 2.5,
+            height: MediaQuery.sizeOf(context).height / 2.2,
             color: Colors.white,
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
@@ -137,7 +137,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
           ],
         ),
-        const SizedBox(height: 15,),
+        const SizedBox(height: 10,),
         const Divider(),
         const TeamMatchDayWidget(),
         const Divider(),

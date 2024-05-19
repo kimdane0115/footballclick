@@ -5,31 +5,36 @@ class TeamMatchDayWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
-      height: 80,
-      child: Row(
-        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
+    return const Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text('2024.05.18 (토)'),
+        SizedBox(
+          height: 50,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Borussia'),
-              Text('FC Call'),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('보루시아'),
+                  Text('FC CAll'),
+                ],
+              ),
+              Spacer(),
+              VerticalDivider(),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('20:00 ~ 22:00'),
+                  Text('평촌자유공원'),
+                ],
+              ),
             ],
           ),
-          // Spacer(),
-          // VerticalDivider(),
-          // Column(
-          //   // crossAxisAlignment: CrossAxisAlignment.start,
-          //   children: [
-          //     Text('20:00'),
-          //     Text('평촌 자유공원'),
-          //   ],
-          // ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
