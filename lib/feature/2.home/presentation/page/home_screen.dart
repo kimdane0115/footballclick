@@ -111,7 +111,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           ],
         ),
         const SizedBox(height: 20,),
-        const TeamRankingWidget(),
+        // TeamRankingWidget(),
+        const Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            TeamRankingWidget(),
+            TeamRankingWidget(),
+            TeamRankingWidget(),
+          ],
+        ),
       ],
     );
   }
