@@ -1,7 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/widgets.dart';
 import 'package:footballclick/feature/2.home/presentation/widget/team_match_day_widget.dart';
 import 'package:footballclick/feature/2.home/presentation/widget/team_ranking_widget.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -61,7 +59,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             padding: const EdgeInsets.all(16.0),
             child: Container(
               padding: const EdgeInsets.all(15),
-              height: 520,
+              height: 250,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(15),
@@ -115,9 +113,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            TeamRankingWidget(),
-            TeamRankingWidget(),
-            TeamRankingWidget(),
+            TeamRankingWidget(name: '김동욱', data1: '37', data2: 'AGE', data3: '11', data4: 'GAME',),
+            TeamRankingWidget(name: '지단', data1: '45', data2: 'AGE', data3: '21', data4: 'GOAL',),
+            TeamRankingWidget(name: '메시', data1: '37', data2: 'AGE', data3: '9', data4: 'ASSIST',),
           ],
         ),
       ],
@@ -146,14 +144,22 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           ],
         ),
         const SizedBox(height: 10,),
-        const Divider(),
-        const TeamMatchDayWidget(),
-        const Divider(),
-        const TeamMatchDayWidget(),
-        const Divider(),
-        const TeamMatchDayWidget(),
-        const Divider(),
-        const TeamMatchDayWidget(),
+        const Expanded(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Divider(),
+                TeamMatchDayWidget(),
+                Divider(),
+                TeamMatchDayWidget(),
+                Divider(),
+                TeamMatchDayWidget(),
+                Divider(),
+                TeamMatchDayWidget(),
+              ],
+            ),
+          ),
+        ),
         // const Expanded(child: TeamMatchDayWidget()),
         // const Divider(),
         // const Expanded(child: TeamMatchDayWidget()),
