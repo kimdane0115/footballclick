@@ -1,7 +1,3 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
 import '../../../../core/constants/index.dart';
 import '../../../1.sign/presentation/provider/supabase_auth_provider.async_notifier.dart';
 
@@ -32,6 +28,13 @@ class _MyInfoPageState extends ConsumerState<MyInfoPage> {
     return SingleChildScrollView(
       child: Column(
         children: [
+          ElevatedButton(
+            onPressed: () {
+              // googlelogin();
+              ref.watch(supaBaseAuthAsyncNotifierProvider.notifier).signOut();
+            },
+            child: const Text('LogOut'),
+          ),
           Stack(
             children: [
               Container(

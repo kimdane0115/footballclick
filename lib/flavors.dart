@@ -25,26 +25,26 @@ class F {
   static String get supabaseUrl {
     switch (appFlavor) {
       case Flavor.dev:
-        return 'https://mccoypiqwvukvcgvxlvi.supabase.co';
+        return 'https://oqlmwguwanntgrwwhrns.supabase.co';
       case Flavor.staging:
-        return 'https://mccoypiqwvukvcgvxlvi.supabase.co';
+        return 'https://oqlmwguwanntgrwwhrns.supabase.co';
       case Flavor.prod:
-        return 'https://mccoypiqwvukvcgvxlvi.supabase.co';
+        return 'https://oqlmwguwanntgrwwhrns.supabase.co';
       default:
-        return 'https://mccoypiqwvukvcgvxlvi.supabase.co';
+        return 'https://oqlmwguwanntgrwwhrns.supabase.co';
     }
   }
 
   static String get supabaseAnonKey {
     switch (appFlavor) {
       case Flavor.dev:
-        return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1jY295cGlxd3Z1a3ZjZ3Z4bHZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTA5MTkwMTUsImV4cCI6MjAyNjQ5NTAxNX0.TszKb82LR3At1YCQk4rUZgkkfkHuid0vUzEjZAVGTZ0';
+        return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9xbG13Z3V3YW5udGdyd3docm5zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTY0NzI0NDgsImV4cCI6MjAzMjA0ODQ0OH0.bVG-dwIOFkmeEde2E2paTJC1IgyqOydPnNXkWXqhYfw';
       case Flavor.staging:
-        return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1jY295cGlxd3Z1a3ZjZ3Z4bHZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTA5MTkwMTUsImV4cCI6MjAyNjQ5NTAxNX0.TszKb82LR3At1YCQk4rUZgkkfkHuid0vUzEjZAVGTZ0';
+        return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9xbG13Z3V3YW5udGdyd3docm5zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTY0NzI0NDgsImV4cCI6MjAzMjA0ODQ0OH0.bVG-dwIOFkmeEde2E2paTJC1IgyqOydPnNXkWXqhYfw';
       case Flavor.prod:
-        return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1jY295cGlxd3Z1a3ZjZ3Z4bHZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTA5MTkwMTUsImV4cCI6MjAyNjQ5NTAxNX0.TszKb82LR3At1YCQk4rUZgkkfkHuid0vUzEjZAVGTZ0';
+        return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9xbG13Z3V3YW5udGdyd3docm5zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTY0NzI0NDgsImV4cCI6MjAzMjA0ODQ0OH0.bVG-dwIOFkmeEde2E2paTJC1IgyqOydPnNXkWXqhYfw';
       default:
-        return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1jY295cGlxd3Z1a3ZjZ3Z4bHZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTA5MTkwMTUsImV4cCI6MjAyNjQ5NTAxNX0.TszKb82LR3At1YCQk4rUZgkkfkHuid0vUzEjZAVGTZ0';
+        return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9xbG13Z3V3YW5udGdyd3docm5zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTY0NzI0NDgsImV4cCI6MjAzMjA0ODQ0OH0.bVG-dwIOFkmeEde2E2paTJC1IgyqOydPnNXkWXqhYfw';
     }
   }
 
