@@ -7,7 +7,7 @@ part of 'player_async_notifier.dart';
 // **************************************************************************
 
 String _$playerAsyncNotifierHash() =>
-    r'bf2f8cf0785463111cf76d92ff04e38927561102';
+    r'7830f73f0e2d1ee1cd23407b81d89a86b65a0516';
 
 /// Copied from Dart SDK
 class _SystemHash {
