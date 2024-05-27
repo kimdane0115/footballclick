@@ -1,3 +1,5 @@
+import 'package:footballclick/feature/1.sign/domain/entities/profile.dart';
+
 import '../repository/sign_repository.dart';
 
 class UserVerify {
@@ -5,7 +7,7 @@ class UserVerify {
 
   UserVerify(this.repository);
 
-  Future<void> call(String email) {
+  Future<Profile> call(String email) {
     return repository.userVerify(email);
   }
 }

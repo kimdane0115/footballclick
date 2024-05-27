@@ -1,3 +1,5 @@
+import 'package:footballclick/feature/1.sign/domain/entities/profile.dart';
+
 abstract class SignRepository {
-  Future<void> userVerify(String email);
+  Future<Profile> userVerify(String email);
 }

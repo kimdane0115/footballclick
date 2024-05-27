@@ -1,7 +1,10 @@
 
 
 import 'dart:async';
+import 'dart:nativewrappers/_internal/vm/lib/ffi_allocation_patch.dart';
 
+import 'package:footballclick/feature/1.sign/presentation/provider/sign_async_notifier.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -9,11 +12,79 @@ import '../../../../core/constants/index.dart';
 import '../provider/supabase_auth_provider.async_notifier.dart';
 import '../widget/show_loadingIndicator.dart';
 
-class LoginPage extends ConsumerWidget {
+class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({super.key});
 
+  // @override
+  // Widget build(BuildContext context, WidgetRef ref) {
+  //   return SafeArea(
+  //     child: Container(
+  //       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+  //       child: Column(
+  //         mainAxisAlignment: MainAxisAlignment.end,
+  //         crossAxisAlignment: CrossAxisAlignment.stretch,
+  //         children: [
+  //           ElevatedButton(
+  //             onPressed: () {
+  //               _googleSignIn(context, ref);
+  //             },
+  //             child: const Text('GOGGLE 로그인'),
+  //           ),
+  //           const SizedBox(height: 8,),
+  //           ElevatedButton(
+  //             onPressed: () {
+  //               _kakaoSignIn(context, ref);
+  //             },
+  //             child: const Text('카카오 로그인'),
+  //           ),
+  //           const SizedBox(height: 8,),
+  //           ElevatedButton(
+  //             onPressed: () {
+  //               const SignUpScreenRoute().push(context);
+  //             },
+  //             child: const Text('회원가입'),
+  //           ),
+  //           // ElevatedButton(
+  //           //   onPressed: () {
+  //           //     // googlelogin();
+  //           //     _googleSignIn(context, ref);
+  //           //   },
+  //           //   child: const Text('Login Button'),
+  //           // ),
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
+
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends ConsumerState<LoginPage> {
+@override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        body: body(),
+      )
+    );
+  }
+
+  Widget body() {
+    ref.listen(
+      signAsyncNotifierProvider,
+      (prev, next) {
+        next.whenOrNull(
+          data: (value) async {
+            if (value == null) return;
+          },
+          error: (error, stackTrace) {
+          },
+        );
+      },
+    );
+
     return SafeArea(
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
@@ -58,7 +129,20 @@ class LoginPage extends ConsumerWidget {
     // final loading = await showLoadingIndicator(context);
     print('>>>>>>>>>> start _googleSignin');
     await showLoadingIndicator(context);
-    ref.watch(supaBaseAuthAsyncNotifierProvider.notifier).signInWithGoogle();
+
+    final GoogleSignInAccount? googleUser = await GoogleSignIn(
+      clientId: '257746472366-nis9odkp8hnm80lkpmuvg2jefs7dgq2j.apps.googleusercontent.com',
+      serverClientId: '257746472366-i63jfjv30f9avq3vp12723gmap541lgh.apps.googleusercontent.com',
+    ).signIn();
+
+    final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+
+    String email = googleUser?.email ?? '';
+    String token = googleAuth?.idToken ?? '';
+
+// ref.read(snsVerificationAsyncNotifierProvider.notifier).snsVerify(request);
+    ref.read(signAsyncNotifierProvider.notifier).snsVerify(email, token);
+    // ref.watch(supaBaseAuthAsyncNotifierProvider.notifier).signInWithGoogle();
     
     // try {
     //   if (await GoogleSignIn().isSignedIn()) {
