@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:footballclick/feature/2.home/presentation/provider/member_async_notifier.dart';
+import 'package:footballclick/feature/2.home/presentation/provider/member_state_notifier.dart';
 import 'package:footballclick/feature/2.home/presentation/widget/team_match_day_widget.dart';
 import 'package:footballclick/feature/2.home/presentation/widget/team_ranking_widget.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -7,6 +9,7 @@ import 'package:table_calendar/table_calendar.dart';
 
 import '../../../../core/constants/index.dart';
 import '../../../1.sign/presentation/provider/supabase_auth_provider.async_notifier.dart';
+import '../../domain/entities/member.dart';
 import '../provider/home_provider.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
@@ -35,7 +38,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
           ],
         ),
-        // body: home(),
+        // body: homeTest(),
         body: body(context),
       ),
     );
@@ -204,6 +207,62 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
+  Widget homeTest() {
+    return ref.watch(memberAsyncNotifierProvider).when(
+      data: (data) {
+        for( Member mem in data) {
+          print('home!!! ${mem.memberId}, ${mem.memberName}, ${mem.memberNumber}, ${mem.phone}');
+        }
+        return Column(
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                // ref.read(getMembersProvider).call('');
+              },
+              child: const Text('Get Memeber'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                final request = {
+                  'name': '호날두',
+                  'fcm_token': '123456',
+                  'profile_image_url': '1234567',
+                  'created_at': DateTime.now().toIso8601String(),
+                };
+                ref.read(memberAsyncNotifierProvider.notifier).addMember(request);
+              },
+              child: const Text('Add Memeber'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                final request = {
+                  // 'name': '메시',
+                  'fcm_token': 'adkfkj',
+                  'profile_image_url': 'https://www.ddd.com',
+                  'updated_at': DateTime.now().toIso8601String(),
+                };
+                ref.read(memberAsyncNotifierProvider.notifier).updateMember(request, 2);
+              },
+              child: const Text('Update Memeber'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                ref.read(memberAsyncNotifierProvider.notifier).deleteMember(2);
+              },
+              child: const Text('Deleted Memeber'),
+            ),
+          ],
+        );
+      },
+      error:(error, stackTrace) {
+        return const SizedBox.shrink();
+      },
+      loading:() {
+        return const SizedBox.shrink();
+      },
+    );
+  }
+
   Widget home() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -224,7 +283,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         ),
         ElevatedButton(
           onPressed: () {
-            ref.read(getMembersProvider).call('');
+            // ref.read(getMembersProvider).call('');
           },
           child: const Text('Get Memeber'),
         ),
@@ -264,6 +323,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       ],
     );
   }
+
+
   Future<void> getFcmToken() async {
     String? token = await FirebaseMessaging.instance.getToken();
 

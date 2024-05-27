@@ -1,10 +1,11 @@
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import '../../../domain/entities/member.dart';
 import '../../models/supabase/sb_member_model.dart';
 
 abstract class SupabaseApiService {
-  Future<void> getMember(String teamId);
+  Future<List<Member>> getMember(String teamId);
   Future<void> addMember(Map<String, dynamic> request);
   Future<void> updateMember(Map<String, dynamic> request, int id);
   Future<void> deleteMemeber(int id);
@@ -12,9 +13,10 @@ abstract class SupabaseApiService {
 
 class SupabaseApiServiceImpl implements SupabaseApiService {
   @override
-  // Future<List<Member>> getMember(String teamId) {
-  Future<void> getMember(String teamId) async {
+  Future<List<Member>> getMember(String teamId) async {
+  // Future<void> getMember(String teamId) async {
     // TODO: implement getMember
+    List<Member> members = [];
     try {
       print('>>> getMemeber is Call');
       final client = Supabase.instance.client;
@@ -28,9 +30,19 @@ class SupabaseApiServiceImpl implements SupabaseApiService {
       print('>>>> response : $response');
       // MemberModel member = MemberModel.fromJson(response);
       List<SbMemberModel> result = response.map((map) => SbMemberModel.fromJson(map)).toList();
-      for(SbMemberModel memeber in result) {
-        print('>>> ${memeber.id}, ${memeber.name}, ${memeber.fcm_token}');
+      for(SbMemberModel args in result) {
+        print('>>> ${args.id}, ${args.name}, ${args.fcm_token}');
+        Member mem = Member(
+          memberName: args.name,
+          memberNumber: args.id,
+          memberId: args.fcm_token,
+          phone: args.profile_image_url,
+        );
+
+        members.add(mem);
       }
+
+      return members;
       // print('${member.id}, ${member.name}');
       // UserModel user = UserModel.fromJson(response);
       // if (user.name == null || user.name!.isEmpty) {

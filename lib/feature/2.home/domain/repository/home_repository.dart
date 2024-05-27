@@ -1,11 +1,12 @@
 
 
 import '../../data/models/models.dart';
+import '../entities/member.dart';
 
 abstract class HomeRepository {
   Future<void> getTeam(String teamId);
-  // Future<List<Member>> getMember(String teamId);
-  Future<void> getMember(String teamId);
+  Future<List<Member>> getMember(String teamId);
+  // Future<void> getMember(String teamId);
   Future<void> addMemeber(Map<String, dynamic> request);
   Future<void> updateMemeber(Map<String, dynamic> request, int id);
   Future<void> deleteMemeber(int id);

@@ -1,4 +1,5 @@
 
+import '../../domain/entities/member.dart';
 import '../../domain/repository/home_repository.dart';
 import '../data_sources/supabase/supabase_home_api_service.dart';
 import '../models/models.dart';
@@ -9,10 +10,11 @@ class HomeRepositoryImpl implements HomeRepository {
   HomeRepositoryImpl(this._supabaseApiService);
 
   @override
-  // Future<List<Member>> getMember(String teamId) {
-  Future<void> getMember(String teamId) async {
+  Future<List<Member>> getMember(String teamId) async {
+  // Future<void> getMember(String teamId) async {
     // TODO: implement getMember
     var res = _supabaseApiService.getMember('teamId');
+    return res;
   }
 
   @override

@@ -28,10 +28,12 @@ class MemberListStateNotifier extends StateNotifier<List<Member>> {
       this._getMembers, this._addMember, this._updateMember, this._deleteMember)
       : super([]);
 
-  Future<void> getMember(String teamId) async {
+  Future<List<Member>> getMember(String teamId) async {
     // final tripsOrFailure = await _getTrips();
     // tripsOrFailure.fold((error) => state = [], (trips) => state = trips);
     final res = await _getMembers(teamId);
+    print('>>>> res : $res');
+    return res;
   }
 
   Future<void> addMember(Map<String, dynamic> request) async {
