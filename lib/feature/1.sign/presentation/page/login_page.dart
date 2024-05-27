@@ -1,15 +1,13 @@
 
 
 import 'dart:async';
-import 'dart:nativewrappers/_internal/vm/lib/ffi_allocation_patch.dart';
-
 import 'package:footballclick/feature/1.sign/presentation/provider/sign_async_notifier.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
+// import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../../core/constants/index.dart';
-import '../provider/supabase_auth_provider.async_notifier.dart';
+// import '../provider/supabase_auth_provider.async_notifier.dart';
 import '../widget/show_loadingIndicator.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
@@ -72,12 +70,15 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   }
 
   Widget body() {
+    final verificationState = ref.watch(signAsyncNotifierProvider);
     ref.listen(
       signAsyncNotifierProvider,
       (prev, next) {
         next.whenOrNull(
           data: (value) async {
             if (value == null) return;
+
+            print('>>>>>> value : $value');
           },
           error: (error, stackTrace) {
           },
@@ -86,41 +87,48 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     );
 
     return SafeArea(
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                _googleSignIn(context, ref);
-              },
-              child: const Text('GOGGLE 로그인'),
+      child: verificationState.maybeWhen(
+        data: (data) {
+          return Container(
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    _googleSignIn(context, ref);
+                  },
+                  child: const Text('GOGGLE 로그인'),
+                ),
+                const SizedBox(height: 8,),
+                ElevatedButton(
+                  onPressed: () {
+                    _kakaoSignIn(context, ref);
+                  },
+                  child: const Text('카카오 로그인'),
+                ),
+                const SizedBox(height: 8,),
+                ElevatedButton(
+                  onPressed: () {
+                    const SignUpScreenRoute().push(context);
+                  },
+                  child: const Text('회원가입'),
+                ),
+                // ElevatedButton(
+                //   onPressed: () {
+                //     // googlelogin();
+                //     _googleSignIn(context, ref);
+                //   },
+                //   child: const Text('Login Button'),
+                // ),
+              ],
             ),
-            const SizedBox(height: 8,),
-            ElevatedButton(
-              onPressed: () {
-                _kakaoSignIn(context, ref);
-              },
-              child: const Text('카카오 로그인'),
-            ),
-            const SizedBox(height: 8,),
-            ElevatedButton(
-              onPressed: () {
-                const SignUpScreenRoute().push(context);
-              },
-              child: const Text('회원가입'),
-            ),
-            // ElevatedButton(
-            //   onPressed: () {
-            //     // googlelogin();
-            //     _googleSignIn(context, ref);
-            //   },
-            //   child: const Text('Login Button'),
-            // ),
-          ],
-        ),
+          );
+        },
+        orElse:() {
+          return const SizedBox.shrink();
+        },
       ),
     );
   }
@@ -128,7 +136,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   Future<void> _googleSignIn(BuildContext context, WidgetRef ref) async {
     // final loading = await showLoadingIndicator(context);
     print('>>>>>>>>>> start _googleSignin');
-    await showLoadingIndicator(context);
+    final loading = await showLoadingIndicator(context);
 
     final GoogleSignInAccount? googleUser = await GoogleSignIn(
       clientId: '257746472366-nis9odkp8hnm80lkpmuvg2jefs7dgq2j.apps.googleusercontent.com',
@@ -140,8 +148,10 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     String email = googleUser?.email ?? '';
     String token = googleAuth?.idToken ?? '';
 
+
 // ref.read(snsVerificationAsyncNotifierProvider.notifier).snsVerify(request);
     ref.read(signAsyncNotifierProvider.notifier).snsVerify(email, token);
+    context.pop(loading);
     // ref.watch(supaBaseAuthAsyncNotifierProvider.notifier).signInWithGoogle();
     
     // try {

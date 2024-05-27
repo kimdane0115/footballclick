@@ -4,6 +4,10 @@ class Member {
   final String memberId;
   final String phone;
 
-  Member({required this.memberName, required this.memberNumber, required this.memberId, required this.phone});
+  Member(
+      {required this.memberName,
+      required this.memberNumber,
+      required this.memberId,
+      required this.phone});
 
 }
