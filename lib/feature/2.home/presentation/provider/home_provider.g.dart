@@ -66,6 +66,34 @@ final addPlayerProvider = Provider<AddPlayer>.internal(
 );
 
 typedef AddPlayerRef = ProviderRef<AddPlayer>;
+String _$updatePlayerHash() => r'c5dc2a8751f235675644882ffd79cc8fbce83385';
+
+/// See also [updatePlayer].
+@ProviderFor(updatePlayer)
+final updatePlayerProvider = Provider<UpdatePlayer>.internal(
+  updatePlayer,
+  name: r'updatePlayerProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$updatePlayerHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef UpdatePlayerRef = ProviderRef<UpdatePlayer>;
+String _$deletePlayerHash() => r'04de9c75e1c708090306c8ba717f673855548365';
+
+/// See also [deletePlayer].
+@ProviderFor(deletePlayer)
+final deletePlayerProvider = Provider<DeletePlayer>.internal(
+  deletePlayer,
+  name: r'deletePlayerProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$deletePlayerHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef DeletePlayerRef = ProviderRef<DeletePlayer>;
 String _$getMembersHash() => r'd78b7f781e9dd6043abff776f22970591b375678';
 
 /// Member

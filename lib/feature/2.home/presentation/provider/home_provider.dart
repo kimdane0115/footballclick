@@ -8,8 +8,10 @@ import '../../domain/repository/home_repository.dart';
 import '../../domain/usecases/add_member.dart';
 import '../../domain/usecases/add_player.dart';
 import '../../domain/usecases/delete_member.dart';
+import '../../domain/usecases/delete_player.dart';
 import '../../domain/usecases/get_members.dart';
 import '../../domain/usecases/update_member.dart';
+import '../../domain/usecases/update_player.dart';
 
 part 'home_provider.g.dart';
 
@@ -41,17 +43,17 @@ AddPlayer addPlayer(AddPlayerRef ref) {
   return AddPlayer(repository);
 }
 
-// @Riverpod(keepAlive: true)
-// UpdatePlayer updatePlayer(UpdatePlayerRef ref) {
-//   final repository = ref.read(homeRepositoryProvider);
-//   return UpdatePlayer(repository);
-// }
+@Riverpod(keepAlive: true)
+UpdatePlayer updatePlayer(UpdatePlayerRef ref) {
+  final repository = ref.read(homeRepositoryProvider);
+  return UpdatePlayer(repository);
+}
 
-// @Riverpod(keepAlive: true)
-// DeletePlayer deletePlayer(DeletePlayerRef ref) {
-//   final repository = ref.read(homeRepositoryProvider);
-//   return DeletePlayer(repository);
-// }
+@Riverpod(keepAlive: true)
+DeletePlayer deletePlayer(DeletePlayerRef ref) {
+  final repository = ref.read(homeRepositoryProvider);
+  return DeletePlayer(repository);
+}
 
 /// Member
 @Riverpod(keepAlive: true)

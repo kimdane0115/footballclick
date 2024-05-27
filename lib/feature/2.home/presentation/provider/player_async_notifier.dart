@@ -34,4 +34,24 @@ class PlayerAsyncNotifier extends _$PlayerAsyncNotifier {
       return fetchPlayers(teamId);
     });
   }
+
+  Future<void> updatePlayer(Map<String, dynamic> request, int id) async {
+    state = const AsyncValue.loading();
+    state = await AsyncValue.guard(() async {
+      final updatePlayer = ref.read(updatePlayerProvider);
+      updatePlayer(request, id);
+
+      return fetchPlayers(teamId);
+    });
+  }
+
+  Future<void> deletePlayer(int id) async {
+    state = const AsyncValue.loading();
+    state = await AsyncValue.guard(() async {
+      final deletePlayer = ref.read(deletePlayerProvider);
+      deletePlayer(id);
+
+      return fetchPlayers(teamId);
+    });
+  }
 }
