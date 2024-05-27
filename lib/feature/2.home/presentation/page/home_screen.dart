@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:footballclick/feature/2.home/presentation/provider/member_async_notifier.dart';
-import 'package:footballclick/feature/2.home/presentation/provider/member_state_notifier.dart';
+import 'package:footballclick/feature/2.home/presentation/provider/player_async_notifier.dart';
 import 'package:footballclick/feature/2.home/presentation/widget/team_match_day_widget.dart';
 import 'package:footballclick/feature/2.home/presentation/widget/team_ranking_widget.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -10,6 +10,7 @@ import 'package:table_calendar/table_calendar.dart';
 import '../../../../core/constants/index.dart';
 import '../../../1.sign/presentation/provider/supabase_auth_provider.async_notifier.dart';
 import '../../domain/entities/member.dart';
+import '../../domain/entities/player.dart';
 import '../provider/home_provider.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
@@ -39,7 +40,24 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           ],
         ),
         // body: homeTest(),
-        body: body(context),
+        body: homeTest2(),
+        // body: body(context),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            final request = {
+              'name': '메시',
+              'number': '10',
+              'position': 'FW',
+              'joindate': DateTime.now().toIso8601String(),
+              'block': false,
+              'team_id': '1',
+              'team_name': 'borussia',
+              // 'created_at': DateTime.now().toIso8601String(),
+            };
+            ref.read(playerAsyncNotifierProvider('1').notifier).addPlayer(request, '1');
+            // ref.read(playerAsyncNotifierProvider.notifier).getPlayers('1');
+          },
+        ),
       ),
     );
   }
@@ -77,6 +95,20 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   }
 
   Widget _teamInfo() {
+    // return ref.watch(playerAsyncNotifierProvider).when(
+    //   data: (data) {
+    //     for(Player player in data) {
+    //       print('>>>>>>>>>>> team home!!! ${player.id}, ${player.name}, ${player.position}, ${player.teamName}');
+    //     }
+    //     return const SizedBox.shrink();
+    //   },
+    //   error: (error, stackTrace) {
+    //     return const SizedBox.shrink();
+    //   },
+    //   loading: () {
+    //     return const SizedBox.shrink();
+    //   },
+    // );
     return Column(
       children: [
         Row(
@@ -248,6 +280,47 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ElevatedButton(
               onPressed: () {
                 ref.read(memberAsyncNotifierProvider.notifier).deleteMember(2);
+              },
+              child: const Text('Deleted Memeber'),
+            ),
+          ],
+        );
+      },
+      error:(error, stackTrace) {
+        return const SizedBox.shrink();
+      },
+      loading:() {
+        return const SizedBox.shrink();
+      },
+    );
+  }
+
+  Widget homeTest2() {
+    return ref.watch(playerAsyncNotifierProvider('1')).when(
+      data: (data) {
+        for(Player player in data) {
+          print('>>>>>>>>>>> team home!!! ${player.id}, ${player.name}, ${player.position}, ${player.teamName}');
+        }
+        return Column(
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                // ref.read(getMembersProvider).call('');
+              },
+              child: const Text('Get Memeber'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+              },
+              child: const Text('Add Memeber'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+              },
+              child: const Text('Update Memeber'),
+            ),
+            ElevatedButton(
+              onPressed: () {
               },
               child: const Text('Deleted Memeber'),
             ),

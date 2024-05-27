@@ -1,10 +1,17 @@
 
+import 'package:footballclick/feature/2.home/data/models/supabase/sb_player_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../domain/entities/member.dart';
+import '../../../domain/entities/player.dart';
 import '../../models/supabase/sb_member_model.dart';
 
 abstract class SupabaseApiService {
+  Future<List<Player>> getPlayers(String teamId);
+  Future<void> addPlayer(Map<String, dynamic> request);
+  Future<void> updatePlayer(Map<String, dynamic> request, int id);
+  Future<void> deletePlayer(int id);
+
   Future<List<Member>> getMember(String teamId);
   Future<void> addMember(Map<String, dynamic> request);
   Future<void> updateMember(Map<String, dynamic> request, int id);
@@ -95,5 +102,63 @@ class SupabaseApiServiceImpl implements SupabaseApiService {
     // final response = await client.from('team').update(request).eq('id', id).select().single();
     print('>>>> response : $response');
     // throw UnimplementedError();
+  }
+  
+  @override
+  Future<void> addPlayer(Map<String, dynamic> request) async {
+    final client = Supabase.instance.client;
+    final response = await client.from('players').insert([request]).select();
+    print('>>>> response : $response');
+  }
+  
+  @override
+  Future<void> deletePlayer(int id) {
+    // TODO: implement deletePlayer
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<List<Player>> getPlayers(String teamId) async {
+    List<Player> players = [];
+    try {
+      final client = Supabase.instance.client;
+      final response = await client
+          .from('players')
+          .select('*');
+          // .eq('id', currentUser.id) // ID 필드를 기준으로 필터링 (Supabase 테이블에 따라 조건이 달라질 수 있습니다)
+          // .single();
+      print('>>>> response : $response');
+      // MemberModel member = MemberModel.fromJson(response);
+      List<SbPlayerModel> result = response.map((map) => SbPlayerModel.fromJson(map)).toList();
+      print('>>>>>> result : ${result.length}');
+      for(SbPlayerModel args in result) {
+        print('>>> ${args.id}, ${args.name},');
+        Player player = Player(
+          id: args.id,
+          teamId: args.team_id,
+          teamName: args.team_name,
+          name: args.name,
+          backNumber: args.number,
+          position: args.position,
+          joindate: args.joindate,
+          block: args.block,
+          updatedAt: args.updated_at,
+          createdAt: args.created_at,
+        );
+
+        players.add(player);
+      }
+
+      return players;
+    } catch (e) {
+      // return null;
+      throw UnimplementedError();
+    }
+  }
+  
+  @override
+  Future<void> updatePlayer(Map<String, dynamic> request, int id) {
+    // TODO: implement updatePlayer
+    throw UnimplementedError();
   }
 }

@@ -1,5 +1,6 @@
 
 import '../../domain/entities/member.dart';
+import '../../domain/entities/player.dart';
 import '../../domain/repository/home_repository.dart';
 import '../data_sources/supabase/supabase_home_api_service.dart';
 import '../models/models.dart';
@@ -13,7 +14,7 @@ class HomeRepositoryImpl implements HomeRepository {
   Future<List<Member>> getMember(String teamId) async {
   // Future<void> getMember(String teamId) async {
     // TODO: implement getMember
-    var res = _supabaseApiService.getMember('teamId');
+    var res = _supabaseApiService.getMember(teamId);
     return res;
   }
 
@@ -60,6 +61,29 @@ class HomeRepositoryImpl implements HomeRepository {
     // TODO: implement updateMemeber
     var res = await _supabaseApiService.updateMember(request, id);
     // throw UnimplementedError();
+  }
+  
+  @override
+  Future<void> addPlayer(Map<String, dynamic> request) async {
+    var res = await _supabaseApiService.addPlayer(request);
+  }
+  
+  @override
+  Future<void> deletePlayer(int id) {
+    // TODO: implement deletePlayer
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<List<Player>> getPlayers(String teamId) async {
+    var res = _supabaseApiService.getPlayers(teamId);
+    return res;
+  }
+  
+  @override
+  Future<void> updatePlayer(Map<String, dynamic> request, int id) {
+    // TODO: implement updatePlayer
+    throw UnimplementedError();
   }
   
 }

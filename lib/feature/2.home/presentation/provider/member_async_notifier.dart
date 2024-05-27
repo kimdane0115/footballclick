@@ -1,8 +1,8 @@
 
-import 'package:footballclick/feature/2.home/presentation/provider/home_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../domain/entities/member.dart';
+import 'home_provider.dart';
 
 part 'member_async_notifier.g.dart';
 
@@ -14,8 +14,8 @@ class MemberAsyncNotifier extends _$MemberAsyncNotifier {
   }
 
   Future<List<Member>> fetchMembers(String teamId) async {
-    final getMembers = ref.read(getMembersProvider);
-    return getMembers('');
+    // final getMembers = ref.read(getMembersProvider);
+    return ref.read(getMembersProvider)(teamId);
   }
 
   Future<void> getMembers(String teamId) async {

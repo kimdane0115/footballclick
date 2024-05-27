@@ -7,7 +7,7 @@ part of 'member_async_notifier.dart';
 // **************************************************************************
 
 String _$memberAsyncNotifierHash() =>
-    r'2d7a701c36cf5daeb028dbc85318e04be664957e';
+    r'168875a37f060e700b7de08ffca9b5ebece88ef2';
 
 /// See also [MemberAsyncNotifier].
 @ProviderFor(MemberAsyncNotifier)

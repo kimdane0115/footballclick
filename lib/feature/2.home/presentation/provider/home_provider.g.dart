@@ -36,9 +36,41 @@ final homeRepositoryProvider = Provider<HomeRepository>.internal(
 );
 
 typedef HomeRepositoryRef = ProviderRef<HomeRepository>;
+String _$getPlayersHash() => r'e927426fc58cb6d58b51753d2d78eb7254a30826';
+
+/// Player
+///
+/// Copied from [getPlayers].
+@ProviderFor(getPlayers)
+final getPlayersProvider = Provider<GetPlayers>.internal(
+  getPlayers,
+  name: r'getPlayersProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$getPlayersHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef GetPlayersRef = ProviderRef<GetPlayers>;
+String _$addPlayerHash() => r'9451221eca9ce09d128bbca66048e75f79b783f8';
+
+/// See also [addPlayer].
+@ProviderFor(addPlayer)
+final addPlayerProvider = Provider<AddPlayer>.internal(
+  addPlayer,
+  name: r'addPlayerProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$addPlayerHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef AddPlayerRef = ProviderRef<AddPlayer>;
 String _$getMembersHash() => r'd78b7f781e9dd6043abff776f22970591b375678';
 
-/// See also [getMembers].
+/// Member
+///
+/// Copied from [getMembers].
 @ProviderFor(getMembers)
 final getMembersProvider = Provider<GetMembers>.internal(
   getMembers,
