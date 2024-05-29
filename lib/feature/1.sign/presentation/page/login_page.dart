@@ -2,12 +2,14 @@
 
 import 'dart:async';
 import 'package:footballclick/feature/1.sign/presentation/provider/sign_async_notifier.dart';
+import 'package:footballclick/feature/2.home/presentation/provider/home_provider.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 // import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../../core/constants/index.dart';
 // import '../provider/supabase_auth_provider.async_notifier.dart';
+import '../provider/supabase_auth_provider.async_notifier.dart';
 import '../widget/show_loadingIndicator.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
@@ -60,7 +62,14 @@ class LoginPage extends ConsumerStatefulWidget {
 }
 
 class _LoginPageState extends ConsumerState<LoginPage> {
-@override
+
+
+  @override
+  void initState() {
+    return super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
@@ -77,6 +86,25 @@ class _LoginPageState extends ConsumerState<LoginPage> {
         next.whenOrNull(
           data: (value) async {
             if (value == null) return;
+
+            if (value.access_token!.isEmpty) {
+              const SignUpAdminScreenRoute().go(context);
+            } else {
+              // if (test == token) {
+              //   print('>>>>> true');
+              // } else {
+              //   print('>>>>> false');
+              // }
+
+              // // print('>>>> accessToken : ${googleAuth?.accessToken}');
+              // print('>>>> idToken : ${googleAuth?.idToken}');
+              // print('>>>>> value : ${value.id_token}');
+              await Supabase.instance.client.auth.signInWithIdToken(
+                provider: OAuthProvider.google,
+                idToken: value.id_token ?? '',
+                accessToken: value.access_token,
+              );
+            }
 
             print('>>>>>> value : $value');
           },
@@ -148,11 +176,23 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     String email = googleUser?.email ?? '';
     String token = googleAuth?.idToken ?? '';
 
+    print('>>> token : ${googleAuth?.idToken}');
 
 // ref.read(snsVerificationAsyncNotifierProvider.notifier).snsVerify(request);
-    ref.read(signAsyncNotifierProvider.notifier).snsVerify(email, token);
+    await ref.read(signAsyncNotifierProvider.notifier).snsVerify(email, googleAuth?.accessToken ?? '');
     context.pop(loading);
     // ref.watch(supaBaseAuthAsyncNotifierProvider.notifier).signInWithGoogle();
+
+
+    // final GoogleSignInAccount? googleUser = await GoogleSignIn(
+    //               clientId: '257746472366-nis9odkp8hnm80lkpmuvg2jefs7dgq2j.apps.googleusercontent.com',
+    //               serverClientId: '257746472366-i63jfjv30f9avq3vp12723gmap541lgh.apps.googleusercontent.com',
+    //             ).signIn();
+
+    //             String email = googleUser?.email ?? '';
+
+    //             // Obtain the auth details from the request
+                
     
     // try {
     //   if (await GoogleSignIn().isSignedIn()) {

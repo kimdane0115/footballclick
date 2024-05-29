@@ -3,6 +3,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import 'sign_async_notifier.dart';
 import 'sign_provider.dart';
 part 'supabase_auth_provider.async_notifier.g.dart';
 
@@ -43,7 +44,7 @@ class SupaBaseAuthAsyncNotifier extends _$SupaBaseAuthAsyncNotifier {
       String email = googleUser?.email ?? '';
 
       print('>>>>>> start email : $email');
-      ref.read(userVerifyProvider).call(email);
+      // ref.read(userVerifyProvider).call(email);
       //  OAuthCredential _googleCredential = GoogleAuthProvider.credential(
       //   idToken: googleAuth?.idToken,
       //   accessToken: googleAuth?.accessToken,
@@ -65,7 +66,20 @@ class SupaBaseAuthAsyncNotifier extends _$SupaBaseAuthAsyncNotifier {
         idToken: googleAuth?.idToken ?? '',
         accessToken: googleAuth?.accessToken,
       );
-      // return '';
+
+      final request = {
+            'uuid': '1',  
+            'email': email,
+            'name': 'test',
+            'profile_image_url': '1234567',
+            'id_token': googleAuth?.idToken,
+            'access_token': googleAuth?.accessToken,
+            'fcm_token': '123456',
+            'updated_at': DateTime.now().toIso8601String(),
+            'created_at': DateTime.now().toIso8601String(),
+          };
+
+      await ref.read(signAsyncNotifierProvider.notifier).addProfie(request);
     });
   }
 
