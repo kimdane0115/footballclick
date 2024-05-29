@@ -1,4 +1,5 @@
 
+import 'package:footballclick/feature/1.sign/domain/usecases/add_profile.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../data/data_sources/supabase/supabase_sign_api_service.dart';
@@ -17,6 +18,12 @@ SupabaseSignApiService supabaseSignApiService (SupabaseSignApiServiceRef ref) {
 SignRepository signRepository(SignRepositoryRef ref) {
   final signApiService = ref.read(supabaseSignApiServiceProvider);
   return SignRepositoryImpl(signApiService);
+}
+
+@riverpod
+AddProfile addProfile(AddProfileRef ref) {
+  final repository = ref.read(signRepositoryProvider);
+  return AddProfile(repository);
 }
 
 @riverpod

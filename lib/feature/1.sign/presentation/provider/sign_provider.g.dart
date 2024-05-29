@@ -39,6 +39,20 @@ final signRepositoryProvider = Provider<SignRepository>.internal(
 );
 
 typedef SignRepositoryRef = ProviderRef<SignRepository>;
+String _$addProfileHash() => r'56b06ea30cc8b741340877c8e917808f3dc8213f';
+
+/// See also [addProfile].
+@ProviderFor(addProfile)
+final addProfileProvider = AutoDisposeProvider<AddProfile>.internal(
+  addProfile,
+  name: r'addProfileProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$addProfileHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef AddProfileRef = AutoDisposeProviderRef<AddProfile>;
 String _$userVerifyHash() => r'455fa4422e7dcc2eea8f445533dd4dfe0fa58f01';
 
 /// See also [userVerify].
