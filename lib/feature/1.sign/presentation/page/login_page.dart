@@ -62,7 +62,7 @@ class LoginPage extends ConsumerStatefulWidget {
 }
 
 class _LoginPageState extends ConsumerState<LoginPage> {
-
+  late BuildContext loading;
 
   @override
   void initState() {
@@ -99,6 +99,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               // // print('>>>> accessToken : ${googleAuth?.accessToken}');
               // print('>>>> idToken : ${googleAuth?.idToken}');
               // print('>>>>> value : ${value.id_token}');
+
               await Supabase.instance.client.auth.signInWithIdToken(
                 provider: OAuthProvider.google,
                 idToken: value.id_token ?? '',
@@ -106,9 +107,16 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               );
             }
 
+            if (mounted) {
+              context.pop(loading);
+            }
+
             print('>>>>>> value : $value');
           },
           error: (error, stackTrace) {
+            if (context.mounted) {
+              context.pop(loading);
+            }
           },
         );
       },
@@ -164,7 +172,11 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   Future<void> _googleSignIn(BuildContext context, WidgetRef ref) async {
     // final loading = await showLoadingIndicator(context);
     print('>>>>>>>>>> start _googleSignin');
-    final loading = await showLoadingIndicator(context);
+    loading = await showLoadingIndicator(context);
+
+    if (await GoogleSignIn().isSignedIn()) {
+      await GoogleSignIn().signOut();
+    }
 
     final GoogleSignInAccount? googleUser = await GoogleSignIn(
       clientId: '257746472366-nis9odkp8hnm80lkpmuvg2jefs7dgq2j.apps.googleusercontent.com',
@@ -179,8 +191,9 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     print('>>> token : ${googleAuth?.idToken}');
 
 // ref.read(snsVerificationAsyncNotifierProvider.notifier).snsVerify(request);
-    await ref.read(signAsyncNotifierProvider.notifier).snsVerify(email, googleAuth?.accessToken ?? '');
-    context.pop(loading);
+    await ref.read(signAsyncNotifierProvider.notifier).snsVerify(
+        email, googleAuth?.idToken ?? '', googleAuth?.accessToken ?? '');
+
     // ref.watch(supaBaseAuthAsyncNotifierProvider.notifier).signInWithGoogle();
 
 
