@@ -1,13 +1,15 @@
+import 'package:footballclick/feature/1.sign/presentation/provider/sign_async_notifier.dart';
+
 import '../../../../core/constants/index.dart';
 
-class SignUpPlayerScreen extends StatefulWidget {
+class SignUpPlayerScreen extends ConsumerStatefulWidget {
   const SignUpPlayerScreen({super.key});
 
   @override
-  State<SignUpPlayerScreen> createState() => _SignUpPlayerScreenState();
+  ConsumerState<SignUpPlayerScreen> createState() => _SignUpPlayerScreenState();
 }
 
-class _SignUpPlayerScreenState extends State<SignUpPlayerScreen> {
+class _SignUpPlayerScreenState extends ConsumerState<SignUpPlayerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +46,14 @@ class _SignUpPlayerScreenState extends State<SignUpPlayerScreen> {
         ),
         ElevatedButton(
           onPressed: () {
-            const HomeScreenRoute().go(context);
+            // const HomeScreenRoute().go(context);
+            final request = {
+              'name': '호날두',
+              'fcm_token': '123456',
+              'profile_image_url': '1234567',
+              'created_at': DateTime.now().toIso8601String(),
+            };
+            ref.read(signAsyncNotifierProvider.notifier).addProfie(request);
           },
           child: const Text('가입완료'),
         ),

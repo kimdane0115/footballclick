@@ -22,10 +22,12 @@ class SignAsyncNotifier extends _$SignAsyncNotifier {
     state = await AsyncValue.guard(() async {
       final addProfile = ref.read(addProfileProvider);
       addProfile(request);
+
+      return null;
     });
   }
 
-  Future<void> snsVerify(String email, String idToken, String accessToken) async {
+  Future<void> userVerify(String email, String idToken, String accessToken) async {
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final profile = ref.read(userVerifyProvider);
