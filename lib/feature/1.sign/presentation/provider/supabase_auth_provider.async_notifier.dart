@@ -20,51 +20,27 @@ class SupaBaseAuthAsyncNotifier extends _$SupaBaseAuthAsyncNotifier {
   FutureOr<void> signInWithGoogle() async {
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
-      
-      final GoogleSignInAccount? googleUser = await GoogleSignIn(
-        clientId: '257746472366-nis9odkp8hnm80lkpmuvg2jefs7dgq2j.apps.googleusercontent.com',
-        serverClientId: '257746472366-i63jfjv30f9avq3vp12723gmap541lgh.apps.googleusercontent.com',
-      ).signIn();
-      // String iosClientId = '';
-      // String webClientId = '';
-      // final GoogleSignInAccount? googleUser = await GoogleSignIn(
-      //   clientId: iosClientId,
-      //   serverClientId: webClientId,
-      // ).signIn();
 
-      // Obtain the auth details from the request
-      final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+    if (await GoogleSignIn().isSignedIn()) {
+      await GoogleSignIn().signOut();
+    }
 
-      print('>>>> displayName : ${googleUser?.displayName}');
-      print('>>>> email : ${googleUser?.email}');
-      print('>>>> accessToken : ${googleAuth?.accessToken}');
-      print('>>>> idToken : ${googleAuth?.idToken}');
+    final GoogleSignInAccount? googleUser = await GoogleSignIn(
+      clientId: '257746472366-nis9odkp8hnm80lkpmuvg2jefs7dgq2j.apps.googleusercontent.com',
+      serverClientId: '257746472366-i63jfjv30f9avq3vp12723gmap541lgh.apps.googleusercontent.com',
+    ).signIn();
 
-      String email = googleUser?.email ?? '';
+    final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
 
-      print('>>>>>> start email : $email');
-      // ref.read(userVerifyProvider).call(email);
-      //  OAuthCredential _googleCredential = GoogleAuthProvider.credential(
-      //   idToken: googleAuth?.idToken,
-      //   accessToken: googleAuth?.accessToken,
-      // );
+    String email = googleUser?.email ?? '';
+    String idToken = googleAuth?.idToken ?? '';
+    String accessToken = googleAuth?.accessToken ?? '';
 
-      // UserCredential _credential =
-      //     await FirebaseAuth.instance.signInWithCredential(_googleCredential);
-      // if (_credential.user != null) 
-      //   print(">>>> ${_credential.user}");
-      //   return _credential.user!.displayName ?? ""; 
-      // } else {
-      //   return '';
-      // }
+    print('>>> token : ${googleAuth?.idToken}');
 
-      /// supabase auth
-      // final AuthResponse response = await Supabase.instance.client.auth.signInWithIdToken(
-      await Supabase.instance.client.auth.signInWithIdToken(
-        provider: OAuthProvider.google,
-        idToken: googleAuth?.idToken ?? '',
-        accessToken: googleAuth?.accessToken,
-      );
+// ref.read(snsVerificationAsyncNotifierProvider.notifier).snsVerify(request);
+    await ref.read(signAsyncNotifierProvider.notifier).userVerify(
+        email, idToken, accessToken);
     });
   }
 
@@ -85,25 +61,7 @@ class SupaBaseAuthAsyncNotifier extends _$SupaBaseAuthAsyncNotifier {
       String idToken = googleAuth?.idToken ?? '';
       String accessToken = googleAuth?.accessToken ?? '';
       // String fcmToken = googleUser?.fcm_token ?? '';
-
-      print('>>>>>> start email : $email');
-      // ref.read(userVerifyProvider).call(email);
-      //  OAuthCredential _googleCredential = GoogleAuthProvider.credential(
-      //   idToken: googleAuth?.idToken,
-      //   accessToken: googleAuth?.accessToken,
-      // );
-
-      // UserCredential _credential =
-      //     await FirebaseAuth.instance.signInWithCredential(_googleCredential);
-      // if (_credential.user != null) 
-      //   print(">>>> ${_credential.user}");
-      //   return _credential.user!.displayName ?? ""; 
-      // } else {
-      //   return '';
-      // }
-
-      /// supabase auth
-      // final AuthResponse response = await Supabase.instance.client.auth.signInWithIdToken(
+      
       final res = await Supabase.instance.client.auth.signInWithIdToken(
         provider: OAuthProvider.google,
         idToken: googleAuth?.idToken ?? '',
