@@ -8,6 +8,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../../core/constants/index.dart';
 // import '../provider/supabase_auth_provider.async_notifier.dart';
+import '../provider/sign_up_screen_notifier.dart';
 import '../widget/show_loadingIndicator.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
@@ -61,6 +62,9 @@ class LoginPage extends ConsumerStatefulWidget {
 
 class _LoginPageState extends ConsumerState<LoginPage> {
   late BuildContext loading;
+  late String email;
+  late String idToken;
+  late String accessToken;
 
   @override
   void initState() {
@@ -86,7 +90,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
             if (value == null) return;
 
             if (value.access_token!.isEmpty) {
-              const SignUpScreenRoute().go(context);
+              _signUp();
             } else {
               await Supabase.instance.client.auth.signInWithIdToken(
                 provider: OAuthProvider.google,
@@ -121,14 +125,14 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    _googleSignIn(context, ref);
+                    _googleSignIn();
                   },
                   child: const Text('GOGGLE 로그인'),
                 ),
                 const SizedBox(height: 8,),
                 ElevatedButton(
                   onPressed: () {
-                    _kakaoSignIn(context, ref);
+                    _kakaoSignIn();
                   },
                   child: const Text('카카오 로그인'),
                 ),
@@ -157,7 +161,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     );
   }
 
-  Future<void> _googleSignIn(BuildContext context, WidgetRef ref) async {
+  // Future<void> _googleSignIn(BuildContext context, WidgetRef ref) async {
+  Future<void> _googleSignIn() async {
     // final loading = await showLoadingIndicator(context);
     print('>>>>>>>>>> start _googleSignin');
     loading = await showLoadingIndicator(context);
@@ -173,9 +178,9 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
     final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
 
-    String email = googleUser?.email ?? '';
-    String idToken = googleAuth?.idToken ?? '';
-    String accessToken = googleAuth?.accessToken ?? '';
+    email = googleUser?.email ?? '';
+    idToken = googleAuth?.idToken ?? '';
+    accessToken = googleAuth?.accessToken ?? '';
 
     print('>>> token : ${googleAuth?.idToken}');
 
@@ -226,7 +231,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     // }
   }
 
-  Future<void> _kakaoSignIn(BuildContext context, WidgetRef ref) async {
+  Future<void> _kakaoSignIn() async {
+  // Future<void> _kakaoSignIn(BuildContext context, WidgetRef ref) async {
       // var hash = await KakaoSdk.origin;
       // if (hash.isNotEmpty) {
       //   print('>>>> has key is exist');
@@ -264,5 +270,15 @@ class _LoginPageState extends ConsumerState<LoginPage> {
         //             }
         //           });
 
+  }
+
+  Future<void> _signUp() async {
+    ref.read(signUpScreenNotifierProvider.notifier).setEmail(email);
+    ref.read(signUpScreenNotifierProvider.notifier).setIdToken(idToken);
+    ref.read(signUpScreenNotifierProvider.notifier).setAcessToken(accessToken);
+
+    if (mounted) {
+      const SignUpScreenRoute().go(context);
+    }
   }
 }

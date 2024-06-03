@@ -4,7 +4,6 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'sign_async_notifier.dart';
-import 'sign_provider.dart';
 part 'supabase_auth_provider.async_notifier.g.dart';
 
 final authStreamProvider = StreamProvider<AuthState>((ref) {
@@ -66,20 +65,63 @@ class SupaBaseAuthAsyncNotifier extends _$SupaBaseAuthAsyncNotifier {
         idToken: googleAuth?.idToken ?? '',
         accessToken: googleAuth?.accessToken,
       );
+    });
+  }
+
+  FutureOr<void> signUpWithGoogle() async {
+    state = const AsyncValue.loading();
+    state = await AsyncValue.guard(() async {
+      
+      final GoogleSignInAccount? googleUser = await GoogleSignIn(
+        clientId: '257746472366-nis9odkp8hnm80lkpmuvg2jefs7dgq2j.apps.googleusercontent.com',
+        serverClientId: '257746472366-i63jfjv30f9avq3vp12723gmap541lgh.apps.googleusercontent.com',
+      ).signIn();
+
+      // Obtain the auth details from the request
+      final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+
+      String name = googleUser?.displayName ?? '';
+      String email = googleUser?.email ?? '';
+      String idToken = googleAuth?.idToken ?? '';
+      String accessToken = googleAuth?.accessToken ?? '';
+      // String fcmToken = googleUser?.fcm_token ?? '';
+
+      print('>>>>>> start email : $email');
+      // ref.read(userVerifyProvider).call(email);
+      //  OAuthCredential _googleCredential = GoogleAuthProvider.credential(
+      //   idToken: googleAuth?.idToken,
+      //   accessToken: googleAuth?.accessToken,
+      // );
+
+      // UserCredential _credential =
+      //     await FirebaseAuth.instance.signInWithCredential(_googleCredential);
+      // if (_credential.user != null) 
+      //   print(">>>> ${_credential.user}");
+      //   return _credential.user!.displayName ?? ""; 
+      // } else {
+      //   return '';
+      // }
+
+      /// supabase auth
+      // final AuthResponse response = await Supabase.instance.client.auth.signInWithIdToken(
+      final res = await Supabase.instance.client.auth.signInWithIdToken(
+        provider: OAuthProvider.google,
+        idToken: googleAuth?.idToken ?? '',
+        accessToken: googleAuth?.accessToken,
+      );
 
       final request = {
-            'uuid': '1',  
-            'email': email,
-            'name': 'test',
-            'profile_image_url': '1234567',
-            'id_token': googleAuth?.idToken,
-            'access_token': googleAuth?.accessToken,
-            'fcm_token': '123456',
-            'updated_at': DateTime.now().toIso8601String(),
-            'created_at': DateTime.now().toIso8601String(),
-          };
-
-      await ref.read(signAsyncNotifierProvider.notifier).addProfie(request);
+        'uuid': res.user?.id,
+        'email': email,
+        'name': name,
+        'fcm_token': '123456',
+        'profile_image_url': '1234567',
+        'id_token': idToken,
+        'access_token': accessToken,
+        // 'created_at': DateTime.now().toIso8601String(),
+      };
+      
+      ref.read(signAsyncNotifierProvider.notifier).addProfie(request);
     });
   }
 
