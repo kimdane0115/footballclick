@@ -13,34 +13,40 @@ final authStreamProvider = StreamProvider<AuthState>((ref) {
 @Riverpod(keepAlive: true)
 class SupaBaseAuthAsyncNotifier extends _$SupaBaseAuthAsyncNotifier {
   @override
-  FutureOr<void> build() async {
-    // return '';
+  FutureOr<bool?> build() async {
+    return null;
   }
 
   FutureOr<void> signInWithGoogle() async {
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
 
-    if (await GoogleSignIn().isSignedIn()) {
-      await GoogleSignIn().signOut();
-    }
+      if (await GoogleSignIn().isSignedIn()) {
+        await GoogleSignIn().signOut();
+      }
 
-    final GoogleSignInAccount? googleUser = await GoogleSignIn(
-      clientId: '257746472366-nis9odkp8hnm80lkpmuvg2jefs7dgq2j.apps.googleusercontent.com',
-      serverClientId: '257746472366-i63jfjv30f9avq3vp12723gmap541lgh.apps.googleusercontent.com',
-    ).signIn();
+      final GoogleSignInAccount? googleUser = await GoogleSignIn(
+        clientId: '257746472366-nis9odkp8hnm80lkpmuvg2jefs7dgq2j.apps.googleusercontent.com',
+        serverClientId: '257746472366-i63jfjv30f9avq3vp12723gmap541lgh.apps.googleusercontent.com',
+      ).signIn();
 
-    final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+      final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
 
-    String email = googleUser?.email ?? '';
-    String idToken = googleAuth?.idToken ?? '';
-    String accessToken = googleAuth?.accessToken ?? '';
+      String email = googleUser?.email ?? '';
+      String idToken = googleAuth?.idToken ?? '';
+      String accessToken = googleAuth?.accessToken ?? '';
 
-    print('>>> token : ${googleAuth?.idToken}');
+      if (idToken.isEmpty) {
+        return false;
+      }
 
-// ref.read(snsVerificationAsyncNotifierProvider.notifier).snsVerify(request);
-    await ref.read(signAsyncNotifierProvider.notifier).userVerify(
-        email, idToken, accessToken);
+      print('>>> token : ${googleAuth?.idToken}');
+
+  // ref.read(snsVerificationAsyncNotifierProvider.notifier).snsVerify(request);
+      await ref.read(signAsyncNotifierProvider.notifier).userVerify(
+          email, idToken, accessToken);
+
+      return true;
     });
   }
 

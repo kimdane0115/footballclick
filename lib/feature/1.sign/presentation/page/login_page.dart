@@ -35,7 +35,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   }
 
   Widget body() {
-    final verificationState = ref.watch(signAsyncNotifierProvider);
+    // final verificationState = ref.watch(signAsyncNotifierProvider);
+    final test = ref.watch(supaBaseAuthAsyncNotifierProvider);
     ref.listen(
       signAsyncNotifierProvider,
       (prev, next) {
@@ -69,8 +70,17 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     );
 
     return SafeArea(
-      child: verificationState.maybeWhen(
+      child: test.maybeWhen(
         data: (data) {
+
+          // if (data == true) {
+          //   return const SizedBox.shrink();
+          // }
+
+          if (data == false) {
+            context.pop(loading);
+          }
+
           return Container(
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
             child: Column(

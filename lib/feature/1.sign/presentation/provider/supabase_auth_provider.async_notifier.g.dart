@@ -7,12 +7,12 @@ part of 'supabase_auth_provider.async_notifier.dart';
 // **************************************************************************
 
 String _$supaBaseAuthAsyncNotifierHash() =>
-    r'904dc6cc6f88661324b1ea72d078e0a5b068c4f2';
+    r'754949b82fc7bdc81d5410fea0dee75232fd62d9';
 
 /// See also [SupaBaseAuthAsyncNotifier].
 @ProviderFor(SupaBaseAuthAsyncNotifier)
 final supaBaseAuthAsyncNotifierProvider =
-    AsyncNotifierProvider<SupaBaseAuthAsyncNotifier, void>.internal(
+    AsyncNotifierProvider<SupaBaseAuthAsyncNotifier, bool?>.internal(
   SupaBaseAuthAsyncNotifier.new,
   name: r'supaBaseAuthAsyncNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -22,6 +22,6 @@ final supaBaseAuthAsyncNotifierProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$SupaBaseAuthAsyncNotifier = AsyncNotifier<void>;
+typedef _$SupaBaseAuthAsyncNotifier = AsyncNotifier<bool?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
