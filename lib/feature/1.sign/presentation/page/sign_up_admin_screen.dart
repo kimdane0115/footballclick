@@ -62,10 +62,6 @@ class _SignUpAdminScreenState extends ConsumerState<SignUpAdminScreen> {
           TextFormField(
       
           ),
-          const Text('신체조건'),
-          TextFormField(
-      
-          ),
           const SizedBox(height: 50,),
           SizedBox(
             width: double.infinity,

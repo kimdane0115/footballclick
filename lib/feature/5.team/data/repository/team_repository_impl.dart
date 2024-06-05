@@ -10,9 +10,11 @@ class TeamRepositoryImpl implements TeamRepository {
   TeamRepositoryImpl(this._supabaseTeamApiService);
   @override
   Future<void> addTeam(Map<String, dynamic> request) async {
-    // TODO: implement addTeam
-    _supabaseTeamApiService.getTeam();
-    throw UnimplementedError();
+    try {
+      await _supabaseTeamApiService.addTeam(request);
+    } catch (e) {
+      rethrow;
+    }
   }
 
   @override
@@ -31,6 +33,16 @@ class TeamRepositoryImpl implements TeamRepository {
   Future<void> updateTeam() {
     // TODO: implement updateTeam
     throw UnimplementedError();
+  }
+  
+  @override
+  Future<String> findTeam(String teamName) async {
+    try {
+      final res = await _supabaseTeamApiService.findTeam(teamName);
+      return res;
+    } catch (e) {
+      rethrow;
+    }
   }
 
 }
