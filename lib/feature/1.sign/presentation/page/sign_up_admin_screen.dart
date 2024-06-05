@@ -1,3 +1,5 @@
+import 'package:footballclick/core/constants/enums.dart';
+
 import '../../../../core/constants/index.dart';
 
 class SignUpAdminScreen extends ConsumerStatefulWidget {
@@ -8,6 +10,7 @@ class SignUpAdminScreen extends ConsumerStatefulWidget {
 }
 
 class _SignUpAdminScreenState extends ConsumerState<SignUpAdminScreen> {
+  int? _value = 1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,8 +50,23 @@ class _SignUpAdminScreenState extends ConsumerState<SignUpAdminScreen> {
           ),
           const SizedBox(height: 20,),
           const Text('직책'),
-          TextFormField(
-      
+          Wrap(
+            spacing: 5.0,
+            children: List<Widget>.generate(
+              3,
+              (int index) {
+                return ChoiceChip(
+                  // label: Text('Item $index'),
+                  label: Text(AdminKind.values[index].name),
+                  selected: _value == index,
+                  onSelected: (bool selected) {
+                    setState(() {
+                      _value = selected ? index : null;
+                    });
+                  },
+                );
+              },
+            ).toList(),
           ),
           const Text('이름'),
           TextFormField(
