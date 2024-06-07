@@ -1,4 +1,5 @@
 import 'package:footballclick/feature/1.sign/presentation/provider/supabase_auth_provider.async_notifier.dart';
+import 'package:footballclick/feature/2.home/presentation/provider/player_async_notifier.dart';
 import '../../../../core/constants/index.dart';
 
 class SignUpPlayerScreen extends ConsumerStatefulWidget {
@@ -75,6 +76,9 @@ class _SignUpPlayerScreenState extends ConsumerState<SignUpPlayerScreen> {
               
               // ref.read(signAsyncNotifierProvider.notifier).addProfie(request);
               ref.read(supaBaseAuthAsyncNotifierProvider.notifier).signUpWithGoogle();
+
+              final request = {'teamid': '1'};
+              ref.read(playerAsyncNotifierProvider('').notifier).addPlayer(request, '1');
             },
             child: const Text('가입완료'),
           ),

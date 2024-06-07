@@ -86,6 +86,8 @@ class SupaBaseAuthAsyncNotifier extends _$SupaBaseAuthAsyncNotifier {
       };
       
       ref.read(signAsyncNotifierProvider.notifier).addProfie(request);
+
+      return null;
     });
   }
 
@@ -98,6 +100,8 @@ class SupaBaseAuthAsyncNotifier extends _$SupaBaseAuthAsyncNotifier {
       // FirebaseService().unsubscribe();
       await GoogleSignIn().signOut();
       await Supabase.instance.client.auth.signOut();
+
+      return null;
     });
   }
 }

@@ -124,8 +124,8 @@ class SupabaseApiServiceImpl implements SupabaseApiService {
       final client = Supabase.instance.client;
       final response = await client
           .from('players')
-          .select('*');
-          // .eq('id', currentUser.id) // ID 필드를 기준으로 필터링 (Supabase 테이블에 따라 조건이 달라질 수 있습니다)
+          .select('*')
+          .eq('team_id', teamId); // ID 필드를 기준으로 필터링 (Supabase 테이블에 따라 조건이 달라질 수 있습니다)
           // .single();
       print('>>>> response : $response');
       // MemberModel member = MemberModel.fromJson(response);
@@ -135,13 +135,13 @@ class SupabaseApiServiceImpl implements SupabaseApiService {
         print('>>> ${args.id}, ${args.name},');
         Player player = Player(
           id: args.id,
-          teamId: args.team_id,
+          teamId: args.team_id ?? '',
           teamName: args.team_name,
           name: args.name,
-          backNumber: args.number,
+          backNumber: args.number ?? '',
           position: args.position,
-          joindate: args.joindate,
-          block: args.block,
+          joindate: args.joindate ?? DateTime.now(),
+          block: args.block ??  false,
           updatedAt: args.updated_at,
           createdAt: args.created_at,
         );

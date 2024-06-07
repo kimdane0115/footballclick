@@ -1,5 +1,6 @@
 
 
+import 'package:footballclick/feature/5.team/data/models/sb_team_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 abstract class SupabaseTeamApiService {
@@ -16,7 +17,10 @@ class SupabaseTeamApiServiceImpl implements SupabaseTeamApiService {
 
     try {
       final client = Supabase.instance.client;
-      await client.from('team').insert([request]).select().single();
+      final response = await client.from('team').insert([request]).select().single();
+      SbTeamModel? model = SbTeamModel.fromJson(response);
+      print('>>>>> team id : ${model.id}');
+      print('>>>>> team id : ${model.team_name}');
     } catch (e) {
       rethrow;
     }

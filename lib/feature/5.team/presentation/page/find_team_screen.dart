@@ -11,6 +11,7 @@ class FindTeamScreen extends ConsumerStatefulWidget {
 }
 
 class _FindTeamScreenState extends ConsumerState<FindTeamScreen> {
+  TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +40,7 @@ class _FindTeamScreenState extends ConsumerState<FindTeamScreen> {
                       Text(data ?? ''),
                       CloseButton(
                         onPressed: () {
+                          ref.read(teamRegisterNotifierProvider.notifier).setTeamName(data);
                           context.pop();
                         },
                       ),
@@ -59,17 +61,18 @@ class _FindTeamScreenState extends ConsumerState<FindTeamScreen> {
         children: [
           const Text('팀 이름'),
           TextFormField(
+            controller: controller,
             onChanged: (value) {
-              ref.read(teamFindNotifierProvider.notifier).setFindTeamName(value);
+              // ref.read(teamFindNotifierProvider.notifier).setFindTeamName(value);
             },
           ),
           const SizedBox(height: 20,),
           ElevatedButton(
             onPressed: () async {
-              String findTeamName = ref.read(teamFindNotifierProvider);
-              ref.read(teamAsyncNotifierProvider.notifier).findTeam(findTeamName);
+              // String findTeamName = ref.read(teamFindNotifierProvider);
+              ref.read(teamAsyncNotifierProvider.notifier).findTeam(controller.text);
             },
-            child: const Text('검색'),
+            child: ref.watch(teamRegisterNotifierProvider.select((value) => value.teamName)) != null ? const Text('선택') : const Text('검색'),
           ),
         ],
       ),

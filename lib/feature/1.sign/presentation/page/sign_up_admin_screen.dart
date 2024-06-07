@@ -1,6 +1,9 @@
 import 'package:footballclick/core/constants/enums.dart';
 
 import '../../../../core/constants/index.dart';
+import '../../../2.home/presentation/provider/player_async_notifier.dart';
+import '../../../5.team/presentation/provider/team_register_notifier.dart';
+import '../provider/supabase_auth_provider.async_notifier.dart';
 
 class SignUpAdminScreen extends ConsumerStatefulWidget {
   const SignUpAdminScreen({super.key});
@@ -11,6 +14,9 @@ class SignUpAdminScreen extends ConsumerStatefulWidget {
 
 class _SignUpAdminScreenState extends ConsumerState<SignUpAdminScreen> {
   int? _value = 1;
+  TextEditingController nameController = TextEditingController();
+  TextEditingController ageController = TextEditingController();
+  TextEditingController positionController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,22 +76,31 @@ class _SignUpAdminScreenState extends ConsumerState<SignUpAdminScreen> {
           ),
           const Text('이름'),
           TextFormField(
-      
+            controller: nameController,
           ),
           const Text('나이'),
           TextFormField(
-      
+            controller: ageController,
           ),
           const Text('포지션'),
           TextFormField(
-      
+            controller: positionController,
           ),
           const SizedBox(height: 50,),
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
-                const HomeScreenRoute().go(context);
+                print('>>>> teamName : ${ref.read(teamRegisterNotifierProvider).teamName}');
+                // const HomeScreenRoute().go(context);
+                final request = {
+                  'name': nameController.text,
+                  'position': positionController.text,
+                  'teamRole': AdminKind.values[_value!].name,
+                  'team_name': ref.read(teamRegisterNotifierProvider).teamName,
+                };
+                ref.read(playerAsyncNotifierProvider('').notifier).addPlayer(request, '');
+                ref.read(supaBaseAuthAsyncNotifierProvider.notifier).signUpWithGoogle();
               },
               child: const Text('가입완료'),
             ),

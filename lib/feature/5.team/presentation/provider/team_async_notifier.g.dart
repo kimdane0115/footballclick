@@ -6,7 +6,7 @@ part of 'team_async_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$teamAsyncNotifierHash() => r'f96c510cd51a8341171f65ba9da3930f8104ca94';
+String _$teamAsyncNotifierHash() => r'97c9ade3e137e3ff8ac1ccf949deb0074068d0fc';
 
 /// See also [TeamAsyncNotifier].
 @ProviderFor(TeamAsyncNotifier)

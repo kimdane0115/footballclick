@@ -21,13 +21,13 @@ SbPlayerModel _$SbPlayerModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$SbPlayerModel {
   int get id => throw _privateConstructorUsedError;
-  String get team_id => throw _privateConstructorUsedError;
+  String? get team_id => throw _privateConstructorUsedError;
   String get team_name => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get number => throw _privateConstructorUsedError;
+  String? get number => throw _privateConstructorUsedError;
   String get position => throw _privateConstructorUsedError;
-  DateTime get joindate => throw _privateConstructorUsedError;
-  bool get block => throw _privateConstructorUsedError;
+  DateTime? get joindate => throw _privateConstructorUsedError;
+  bool? get block => throw _privateConstructorUsedError;
   DateTime get updated_at => throw _privateConstructorUsedError;
   DateTime get created_at => throw _privateConstructorUsedError;
 
@@ -45,13 +45,13 @@ abstract class $SbPlayerModelCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      String team_id,
+      String? team_id,
       String team_name,
       String name,
-      String number,
+      String? number,
       String position,
-      DateTime joindate,
-      bool block,
+      DateTime? joindate,
+      bool? block,
       DateTime updated_at,
       DateTime created_at});
 }
@@ -70,13 +70,13 @@ class _$SbPlayerModelCopyWithImpl<$Res, $Val extends SbPlayerModel>
   @override
   $Res call({
     Object? id = null,
-    Object? team_id = null,
+    Object? team_id = freezed,
     Object? team_name = null,
     Object? name = null,
-    Object? number = null,
+    Object? number = freezed,
     Object? position = null,
-    Object? joindate = null,
-    Object? block = null,
+    Object? joindate = freezed,
+    Object? block = freezed,
     Object? updated_at = null,
     Object? created_at = null,
   }) {
@@ -85,10 +85,10 @@ class _$SbPlayerModelCopyWithImpl<$Res, $Val extends SbPlayerModel>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      team_id: null == team_id
+      team_id: freezed == team_id
           ? _value.team_id
           : team_id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       team_name: null == team_name
           ? _value.team_name
           : team_name // ignore: cast_nullable_to_non_nullable
@@ -97,22 +97,22 @@ class _$SbPlayerModelCopyWithImpl<$Res, $Val extends SbPlayerModel>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      number: null == number
+      number: freezed == number
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       position: null == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
               as String,
-      joindate: null == joindate
+      joindate: freezed == joindate
           ? _value.joindate
           : joindate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      block: null == block
+              as DateTime?,
+      block: freezed == block
           ? _value.block
           : block // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
       updated_at: null == updated_at
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
@@ -135,13 +135,13 @@ abstract class _$$SbPlayerModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {int id,
-      String team_id,
+      String? team_id,
       String team_name,
       String name,
-      String number,
+      String? number,
       String position,
-      DateTime joindate,
-      bool block,
+      DateTime? joindate,
+      bool? block,
       DateTime updated_at,
       DateTime created_at});
 }
@@ -158,13 +158,13 @@ class __$$SbPlayerModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? team_id = null,
+    Object? team_id = freezed,
     Object? team_name = null,
     Object? name = null,
-    Object? number = null,
+    Object? number = freezed,
     Object? position = null,
-    Object? joindate = null,
-    Object? block = null,
+    Object? joindate = freezed,
+    Object? block = freezed,
     Object? updated_at = null,
     Object? created_at = null,
   }) {
@@ -173,10 +173,10 @@ class __$$SbPlayerModelImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      team_id: null == team_id
+      team_id: freezed == team_id
           ? _value.team_id
           : team_id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       team_name: null == team_name
           ? _value.team_name
           : team_name // ignore: cast_nullable_to_non_nullable
@@ -185,22 +185,22 @@ class __$$SbPlayerModelImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      number: null == number
+      number: freezed == number
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       position: null == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
               as String,
-      joindate: null == joindate
+      joindate: freezed == joindate
           ? _value.joindate
           : joindate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      block: null == block
+              as DateTime?,
+      block: freezed == block
           ? _value.block
           : block // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
       updated_at: null == updated_at
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
@@ -219,13 +219,13 @@ class __$$SbPlayerModelImplCopyWithImpl<$Res>
 class _$SbPlayerModelImpl implements _SbPlayerModel {
   _$SbPlayerModelImpl(
       {required this.id,
-      required this.team_id,
+      this.team_id,
       required this.team_name,
       required this.name,
-      required this.number,
+      this.number,
       required this.position,
-      required this.joindate,
-      required this.block,
+      this.joindate,
+      this.block,
       required this.updated_at,
       required this.created_at});
 
@@ -235,19 +235,19 @@ class _$SbPlayerModelImpl implements _SbPlayerModel {
   @override
   final int id;
   @override
-  final String team_id;
+  final String? team_id;
   @override
   final String team_name;
   @override
   final String name;
   @override
-  final String number;
+  final String? number;
   @override
   final String position;
   @override
-  final DateTime joindate;
+  final DateTime? joindate;
   @override
-  final bool block;
+  final bool? block;
   @override
   final DateTime updated_at;
   @override
@@ -302,13 +302,13 @@ class _$SbPlayerModelImpl implements _SbPlayerModel {
 abstract class _SbPlayerModel implements SbPlayerModel {
   factory _SbPlayerModel(
       {required final int id,
-      required final String team_id,
+      final String? team_id,
       required final String team_name,
       required final String name,
-      required final String number,
+      final String? number,
       required final String position,
-      required final DateTime joindate,
-      required final bool block,
+      final DateTime? joindate,
+      final bool? block,
       required final DateTime updated_at,
       required final DateTime created_at}) = _$SbPlayerModelImpl;
 
@@ -318,19 +318,19 @@ abstract class _SbPlayerModel implements SbPlayerModel {
   @override
   int get id;
   @override
-  String get team_id;
+  String? get team_id;
   @override
   String get team_name;
   @override
   String get name;
   @override
-  String get number;
+  String? get number;
   @override
   String get position;
   @override
-  DateTime get joindate;
+  DateTime? get joindate;
   @override
-  bool get block;
+  bool? get block;
   @override
   DateTime get updated_at;
   @override

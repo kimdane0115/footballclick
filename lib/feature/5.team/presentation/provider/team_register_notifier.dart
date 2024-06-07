@@ -28,14 +28,14 @@ class TeamRegisterNotifier extends _$TeamRegisterNotifier {
   }
 }
 
-@Riverpod(keepAlive: true)
-class TeamFindNotifier extends _$TeamFindNotifier {
-  @override
-  String build() {
-    return '';
-  }
+// @Riverpod(keepAlive: true)
+// class TeamFindNotifier extends _$TeamFindNotifier {
+//   @override
+//   String build() {
+//     return '';
+//   }
 
-  void setFindTeamName(String findName) {
-    state = findName;
-  }
-}
+//   void setFindTeamName(String findName) {
+//     state = findName;
+//   }
+// }
