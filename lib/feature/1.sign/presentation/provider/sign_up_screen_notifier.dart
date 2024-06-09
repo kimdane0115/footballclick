@@ -13,9 +13,9 @@ class SignUpScreenNotifier extends _$SignUpScreenNotifier {
     return Profile(
       email: '',
       name: '',
-      profile_image_url: '',
-      fcm_token: '',
-      created_at: DateTime.now(),
+      profileImageUrl: '',
+      fcmToken: '',
+      createdAt: DateTime.now(),
     );
   }
 
@@ -24,11 +24,11 @@ class SignUpScreenNotifier extends _$SignUpScreenNotifier {
   }
 
   void setProfileImageUrl(String profileImageUrl) {
-    state = state.copyWith(profile_image_url: profileImageUrl);
+    state = state.copyWith(profileImageUrl: profileImageUrl);
   }
 
   void setFcmToken(String fcmToken) {
-    state = state.copyWith(fcm_token: fcmToken);
+    state = state.copyWith(fcmToken: fcmToken);
   }
 
   void setEmail(String email) {
@@ -36,10 +36,10 @@ class SignUpScreenNotifier extends _$SignUpScreenNotifier {
   }
 
   void setIdToken(String idToken) {
-    state = state.copyWith(id_token: idToken);
+    state = state.copyWith(idToken: idToken);
   }
 
   void setAcessToken(String accessToken) {
-    state = state.copyWith(access_token: accessToken);
+    state = state.copyWith(accessToken: accessToken);
   }
 }

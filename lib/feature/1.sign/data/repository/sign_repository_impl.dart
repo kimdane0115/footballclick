@@ -20,22 +20,22 @@ class SignRepositoryImpl extends SignRepository {
           id: res.id,
           email: res.email,
           name: res.name,
-          profile_image_url: res.profile_image_url,
-          fcm_token: res.fcm_token,
-          access_token: res.access_token,
-          id_token: res.id_token,
-          created_at: res.created_at,
+          profileImageUrl: res.profileImageUrl,
+          fcmToken: res.fcmToken,
+          accessToken: res.accessToken,
+          idToken: res.idToken,
+          createdAt: res.createdAt,
         );
       } else {
         return Profile(
           id: 0,
           email: '',
           name: '',
-          profile_image_url: '',
-          fcm_token: '',
-          access_token: '',
-          id_token: '',
-          created_at: DateTime.now(),
+          profileImageUrl: '',
+          fcmToken: '',
+          accessToken: '',
+          idToken: '',
+          createdAt: DateTime.now(),
         );
       }
     } catch (e) {

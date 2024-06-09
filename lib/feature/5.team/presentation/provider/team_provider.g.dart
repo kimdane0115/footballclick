@@ -37,6 +37,20 @@ final teamRepositoryProvider = Provider<TeamRepository>.internal(
 );
 
 typedef TeamRepositoryRef = ProviderRef<TeamRepository>;
+String _$getTeamsHash() => r'874da163d060c6968f72552913b22a52d871eddb';
+
+/// See also [getTeams].
+@ProviderFor(getTeams)
+final getTeamsProvider = AutoDisposeProvider<GetTeams>.internal(
+  getTeams,
+  name: r'getTeamsProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$getTeamsHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef GetTeamsRef = AutoDisposeProviderRef<GetTeams>;
 String _$addTeamHash() => r'b42df79d0be1673a3fe495835f3028951a542e35';
 
 /// See also [addTeam].
@@ -51,19 +65,5 @@ final addTeamProvider = Provider<AddTeam>.internal(
 );
 
 typedef AddTeamRef = ProviderRef<AddTeam>;
-String _$findTeamHash() => r'39c4a64e0644cd37e566daf237effe6d6796d3aa';
-
-/// See also [findTeam].
-@ProviderFor(findTeam)
-final findTeamProvider = Provider<FindTeam>.internal(
-  findTeam,
-  name: r'findTeamProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$findTeamHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-typedef FindTeamRef = ProviderRef<FindTeam>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

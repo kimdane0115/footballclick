@@ -66,7 +66,6 @@ class SupaBaseAuthAsyncNotifier extends _$SupaBaseAuthAsyncNotifier {
       String email = googleUser?.email ?? '';
       String idToken = googleAuth?.idToken ?? '';
       String accessToken = googleAuth?.accessToken ?? '';
-      // String fcmToken = googleUser?.fcm_token ?? '';
       
       final res = await Supabase.instance.client.auth.signInWithIdToken(
         provider: OAuthProvider.google,
@@ -78,11 +77,11 @@ class SupaBaseAuthAsyncNotifier extends _$SupaBaseAuthAsyncNotifier {
         'uuid': res.user?.id,
         'email': email,
         'name': name,
-        'fcm_token': '123456',
-        'profile_image_url': '1234567',
-        'id_token': idToken,
-        'access_token': accessToken,
-        // 'created_at': DateTime.now().toIso8601String(),
+        'fcmToken': '123456',
+        'profileImageUrl': '1234567',
+        'idToken': idToken,
+        'accessToken': accessToken,
+        // 'createdAt': DateTime.now().toIso8601String(),
       };
       
       ref.read(signAsyncNotifierProvider.notifier).addProfie(request);

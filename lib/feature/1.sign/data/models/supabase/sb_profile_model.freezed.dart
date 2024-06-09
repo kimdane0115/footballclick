@@ -23,12 +23,12 @@ mixin _$SbProfileModel {
   int get id => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get profile_image_url => throw _privateConstructorUsedError;
-  String get access_token => throw _privateConstructorUsedError;
-  String get id_token => throw _privateConstructorUsedError;
-  String get fcm_token => throw _privateConstructorUsedError;
-  DateTime get created_at => throw _privateConstructorUsedError;
-  DateTime get updated_at => throw _privateConstructorUsedError;
+  String get profileImageUrl => throw _privateConstructorUsedError;
+  String get accessToken => throw _privateConstructorUsedError;
+  String get idToken => throw _privateConstructorUsedError;
+  String get fcmToken => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
+  DateTime get updatedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,12 +46,12 @@ abstract class $SbProfileModelCopyWith<$Res> {
       {int id,
       String email,
       String name,
-      String profile_image_url,
-      String access_token,
-      String id_token,
-      String fcm_token,
-      DateTime created_at,
-      DateTime updated_at});
+      String profileImageUrl,
+      String accessToken,
+      String idToken,
+      String fcmToken,
+      DateTime createdAt,
+      DateTime updatedAt});
 }
 
 /// @nodoc
@@ -70,12 +70,12 @@ class _$SbProfileModelCopyWithImpl<$Res, $Val extends SbProfileModel>
     Object? id = null,
     Object? email = null,
     Object? name = null,
-    Object? profile_image_url = null,
-    Object? access_token = null,
-    Object? id_token = null,
-    Object? fcm_token = null,
-    Object? created_at = null,
-    Object? updated_at = null,
+    Object? profileImageUrl = null,
+    Object? accessToken = null,
+    Object? idToken = null,
+    Object? fcmToken = null,
+    Object? createdAt = null,
+    Object? updatedAt = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -90,29 +90,29 @@ class _$SbProfileModelCopyWithImpl<$Res, $Val extends SbProfileModel>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      profile_image_url: null == profile_image_url
-          ? _value.profile_image_url
-          : profile_image_url // ignore: cast_nullable_to_non_nullable
+      profileImageUrl: null == profileImageUrl
+          ? _value.profileImageUrl
+          : profileImageUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      access_token: null == access_token
-          ? _value.access_token
-          : access_token // ignore: cast_nullable_to_non_nullable
+      accessToken: null == accessToken
+          ? _value.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
               as String,
-      id_token: null == id_token
-          ? _value.id_token
-          : id_token // ignore: cast_nullable_to_non_nullable
+      idToken: null == idToken
+          ? _value.idToken
+          : idToken // ignore: cast_nullable_to_non_nullable
               as String,
-      fcm_token: null == fcm_token
-          ? _value.fcm_token
-          : fcm_token // ignore: cast_nullable_to_non_nullable
+      fcmToken: null == fcmToken
+          ? _value.fcmToken
+          : fcmToken // ignore: cast_nullable_to_non_nullable
               as String,
-      created_at: null == created_at
-          ? _value.created_at
-          : created_at // ignore: cast_nullable_to_non_nullable
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      updated_at: null == updated_at
-          ? _value.updated_at
-          : updated_at // ignore: cast_nullable_to_non_nullable
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ) as $Val);
   }
@@ -130,12 +130,12 @@ abstract class _$$SbProfileModelImplCopyWith<$Res>
       {int id,
       String email,
       String name,
-      String profile_image_url,
-      String access_token,
-      String id_token,
-      String fcm_token,
-      DateTime created_at,
-      DateTime updated_at});
+      String profileImageUrl,
+      String accessToken,
+      String idToken,
+      String fcmToken,
+      DateTime createdAt,
+      DateTime updatedAt});
 }
 
 /// @nodoc
@@ -152,12 +152,12 @@ class __$$SbProfileModelImplCopyWithImpl<$Res>
     Object? id = null,
     Object? email = null,
     Object? name = null,
-    Object? profile_image_url = null,
-    Object? access_token = null,
-    Object? id_token = null,
-    Object? fcm_token = null,
-    Object? created_at = null,
-    Object? updated_at = null,
+    Object? profileImageUrl = null,
+    Object? accessToken = null,
+    Object? idToken = null,
+    Object? fcmToken = null,
+    Object? createdAt = null,
+    Object? updatedAt = null,
   }) {
     return _then(_$SbProfileModelImpl(
       id: null == id
@@ -172,47 +172,48 @@ class __$$SbProfileModelImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      profile_image_url: null == profile_image_url
-          ? _value.profile_image_url
-          : profile_image_url // ignore: cast_nullable_to_non_nullable
+      profileImageUrl: null == profileImageUrl
+          ? _value.profileImageUrl
+          : profileImageUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      access_token: null == access_token
-          ? _value.access_token
-          : access_token // ignore: cast_nullable_to_non_nullable
+      accessToken: null == accessToken
+          ? _value.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
               as String,
-      id_token: null == id_token
-          ? _value.id_token
-          : id_token // ignore: cast_nullable_to_non_nullable
+      idToken: null == idToken
+          ? _value.idToken
+          : idToken // ignore: cast_nullable_to_non_nullable
               as String,
-      fcm_token: null == fcm_token
-          ? _value.fcm_token
-          : fcm_token // ignore: cast_nullable_to_non_nullable
+      fcmToken: null == fcmToken
+          ? _value.fcmToken
+          : fcmToken // ignore: cast_nullable_to_non_nullable
               as String,
-      created_at: null == created_at
-          ? _value.created_at
-          : created_at // ignore: cast_nullable_to_non_nullable
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      updated_at: null == updated_at
-          ? _value.updated_at
-          : updated_at // ignore: cast_nullable_to_non_nullable
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(includeIfNull: false, explicitToJson: true)
 class _$SbProfileModelImpl implements _SbProfileModel {
   _$SbProfileModelImpl(
       {required this.id,
       required this.email,
       required this.name,
-      required this.profile_image_url,
-      required this.access_token,
-      required this.id_token,
-      required this.fcm_token,
-      required this.created_at,
-      required this.updated_at});
+      required this.profileImageUrl,
+      required this.accessToken,
+      required this.idToken,
+      required this.fcmToken,
+      required this.createdAt,
+      required this.updatedAt});
 
   factory _$SbProfileModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$SbProfileModelImplFromJson(json);
@@ -224,21 +225,21 @@ class _$SbProfileModelImpl implements _SbProfileModel {
   @override
   final String name;
   @override
-  final String profile_image_url;
+  final String profileImageUrl;
   @override
-  final String access_token;
+  final String accessToken;
   @override
-  final String id_token;
+  final String idToken;
   @override
-  final String fcm_token;
+  final String fcmToken;
   @override
-  final DateTime created_at;
+  final DateTime createdAt;
   @override
-  final DateTime updated_at;
+  final DateTime updatedAt;
 
   @override
   String toString() {
-    return 'SbProfileModel(id: $id, email: $email, name: $name, profile_image_url: $profile_image_url, access_token: $access_token, id_token: $id_token, fcm_token: $fcm_token, created_at: $created_at, updated_at: $updated_at)';
+    return 'SbProfileModel(id: $id, email: $email, name: $name, profileImageUrl: $profileImageUrl, accessToken: $accessToken, idToken: $idToken, fcmToken: $fcmToken, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -249,33 +250,23 @@ class _$SbProfileModelImpl implements _SbProfileModel {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.profile_image_url, profile_image_url) ||
-                other.profile_image_url == profile_image_url) &&
-            (identical(other.access_token, access_token) ||
-                other.access_token == access_token) &&
-            (identical(other.id_token, id_token) ||
-                other.id_token == id_token) &&
-            (identical(other.fcm_token, fcm_token) ||
-                other.fcm_token == fcm_token) &&
-            (identical(other.created_at, created_at) ||
-                other.created_at == created_at) &&
-            (identical(other.updated_at, updated_at) ||
-                other.updated_at == updated_at));
+            (identical(other.profileImageUrl, profileImageUrl) ||
+                other.profileImageUrl == profileImageUrl) &&
+            (identical(other.accessToken, accessToken) ||
+                other.accessToken == accessToken) &&
+            (identical(other.idToken, idToken) || other.idToken == idToken) &&
+            (identical(other.fcmToken, fcmToken) ||
+                other.fcmToken == fcmToken) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      email,
-      name,
-      profile_image_url,
-      access_token,
-      id_token,
-      fcm_token,
-      created_at,
-      updated_at);
+  int get hashCode => Object.hash(runtimeType, id, email, name, profileImageUrl,
+      accessToken, idToken, fcmToken, createdAt, updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -297,12 +288,12 @@ abstract class _SbProfileModel implements SbProfileModel {
       {required final int id,
       required final String email,
       required final String name,
-      required final String profile_image_url,
-      required final String access_token,
-      required final String id_token,
-      required final String fcm_token,
-      required final DateTime created_at,
-      required final DateTime updated_at}) = _$SbProfileModelImpl;
+      required final String profileImageUrl,
+      required final String accessToken,
+      required final String idToken,
+      required final String fcmToken,
+      required final DateTime createdAt,
+      required final DateTime updatedAt}) = _$SbProfileModelImpl;
 
   factory _SbProfileModel.fromJson(Map<String, dynamic> json) =
       _$SbProfileModelImpl.fromJson;
@@ -314,17 +305,17 @@ abstract class _SbProfileModel implements SbProfileModel {
   @override
   String get name;
   @override
-  String get profile_image_url;
+  String get profileImageUrl;
   @override
-  String get access_token;
+  String get accessToken;
   @override
-  String get id_token;
+  String get idToken;
   @override
-  String get fcm_token;
+  String get fcmToken;
   @override
-  DateTime get created_at;
+  DateTime get createdAt;
   @override
-  DateTime get updated_at;
+  DateTime get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$SbProfileModelImplCopyWith<_$SbProfileModelImpl> get copyWith =>

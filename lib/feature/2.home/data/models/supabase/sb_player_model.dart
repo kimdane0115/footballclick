@@ -8,15 +8,15 @@ class SbPlayerModel with _$SbPlayerModel {
   @JsonSerializable(includeIfNull: false, explicitToJson: true)
   factory SbPlayerModel({
     required int id,
-    String? team_id,
-    required String team_name,
+    String? teamId,
+    required String teamName,
     required String name,
     String? number,
     required String position,
     DateTime? joindate,
     bool? block,
-    required DateTime updated_at,
-    required DateTime created_at,
+    required DateTime updatedAt,
+    required DateTime createdAt,
   }) = _SbPlayerModel;
 
   factory SbPlayerModel.fromJson(Map<String, dynamic> json) => _$SbPlayerModelFromJson(json);

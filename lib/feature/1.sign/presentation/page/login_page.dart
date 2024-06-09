@@ -44,13 +44,13 @@ class _LoginPageState extends ConsumerState<LoginPage> {
           data: (value) async {
             if (value == null) return;
 
-            if (value.access_token!.isEmpty) {
+            if (value.accessToken!.isEmpty) {
               _signUp();
             } else {
               await Supabase.instance.client.auth.signInWithIdToken(
                 provider: OAuthProvider.google,
-                idToken: value.id_token ?? '',
-                accessToken: value.access_token,
+                idToken: value.idToken ?? '',
+                accessToken: value.accessToken,
               );
             }
 

@@ -20,9 +20,9 @@ class SupabaseSignApiServiceImpl implements SupabaseSignApiService {
         final response = await client
           .from('profiles')
           .update({
-            'id_token': idToken,
-            'access_token': accessToken,
-            'updated_at': DateTime.now().toIso8601String()
+            'idToken': idToken,
+            'accessToken': accessToken,
+            'updatedAt': DateTime.now().toIso8601String()
           })
           .eq('email', email)
           .select()

@@ -4,7 +4,7 @@ import 'package:footballclick/feature/5.team/data/models/sb_team_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 abstract class SupabaseTeamApiService {
-  Future<void> getTeam();
+  Future<List<SbTeamModel>> getTeams(String? teamName);
   Future<String> findTeam(String teamName);
   Future<void> addTeam(Map<String, dynamic> request);
   Future<void> updateTeam();
@@ -20,7 +20,7 @@ class SupabaseTeamApiServiceImpl implements SupabaseTeamApiService {
       final response = await client.from('team').insert([request]).select().single();
       SbTeamModel? model = SbTeamModel.fromJson(response);
       print('>>>>> team id : ${model.id}');
-      print('>>>>> team id : ${model.team_name}');
+      print('>>>>> team id : ${model.teamName}');
     } catch (e) {
       rethrow;
     }
@@ -33,9 +33,18 @@ class SupabaseTeamApiServiceImpl implements SupabaseTeamApiService {
   }
 
   @override
-  Future<void> getTeam() {
-    // TODO: implement getTeam
-    throw UnimplementedError();
+  Future<List<SbTeamModel>> getTeams(String? teamName) async {
+    try {
+      final client = Supabase.instance.client;
+      final response = teamName == null || teamName.isEmpty
+          ? await client.from('team').select()
+          : await client.from('team').select().eq('teamName', teamName);
+
+      final result = response.map((map) => SbTeamModel.fromJson(map)).toList();
+      return result;
+    } catch (e) {
+      rethrow;
+    }
   }
 
   @override
@@ -48,9 +57,9 @@ class SupabaseTeamApiServiceImpl implements SupabaseTeamApiService {
   Future<String> findTeam(String teamName) async {
     try {
       final client = Supabase.instance.client;
-      final res = await client.from('team').select('*').eq('team_name', teamName).single();
-      print('>>>>> res : ${res['team_name']}');
-      return res['team_name'];
+      final res = await client.from('team').select('*').eq('teamName', teamName).single();
+      print('>>>>> res : ${res['teamName']}');
+      return res['teamName'];
     } catch (e) {
       rethrow;
     }

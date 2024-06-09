@@ -22,9 +22,9 @@ SbMemberModel _$SbMemberModelFromJson(Map<String, dynamic> json) {
 mixin _$SbMemberModel {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get fcm_token => throw _privateConstructorUsedError;
-  String get profile_image_url => throw _privateConstructorUsedError;
-  DateTime get created_at => throw _privateConstructorUsedError;
+  String get fcmToken => throw _privateConstructorUsedError;
+  String get profileImageUrl => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,9 +41,9 @@ abstract class $SbMemberModelCopyWith<$Res> {
   $Res call(
       {int id,
       String name,
-      String fcm_token,
-      String profile_image_url,
-      DateTime created_at});
+      String fcmToken,
+      String profileImageUrl,
+      DateTime createdAt});
 }
 
 /// @nodoc
@@ -61,9 +61,9 @@ class _$SbMemberModelCopyWithImpl<$Res, $Val extends SbMemberModel>
   $Res call({
     Object? id = null,
     Object? name = null,
-    Object? fcm_token = null,
-    Object? profile_image_url = null,
-    Object? created_at = null,
+    Object? fcmToken = null,
+    Object? profileImageUrl = null,
+    Object? createdAt = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -74,17 +74,17 @@ class _$SbMemberModelCopyWithImpl<$Res, $Val extends SbMemberModel>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      fcm_token: null == fcm_token
-          ? _value.fcm_token
-          : fcm_token // ignore: cast_nullable_to_non_nullable
+      fcmToken: null == fcmToken
+          ? _value.fcmToken
+          : fcmToken // ignore: cast_nullable_to_non_nullable
               as String,
-      profile_image_url: null == profile_image_url
-          ? _value.profile_image_url
-          : profile_image_url // ignore: cast_nullable_to_non_nullable
+      profileImageUrl: null == profileImageUrl
+          ? _value.profileImageUrl
+          : profileImageUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      created_at: null == created_at
-          ? _value.created_at
-          : created_at // ignore: cast_nullable_to_non_nullable
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ) as $Val);
   }
@@ -101,9 +101,9 @@ abstract class _$$SbMemberModelImplCopyWith<$Res>
   $Res call(
       {int id,
       String name,
-      String fcm_token,
-      String profile_image_url,
-      DateTime created_at});
+      String fcmToken,
+      String profileImageUrl,
+      DateTime createdAt});
 }
 
 /// @nodoc
@@ -119,9 +119,9 @@ class __$$SbMemberModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? name = null,
-    Object? fcm_token = null,
-    Object? profile_image_url = null,
-    Object? created_at = null,
+    Object? fcmToken = null,
+    Object? profileImageUrl = null,
+    Object? createdAt = null,
   }) {
     return _then(_$SbMemberModelImpl(
       id: null == id
@@ -132,17 +132,17 @@ class __$$SbMemberModelImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      fcm_token: null == fcm_token
-          ? _value.fcm_token
-          : fcm_token // ignore: cast_nullable_to_non_nullable
+      fcmToken: null == fcmToken
+          ? _value.fcmToken
+          : fcmToken // ignore: cast_nullable_to_non_nullable
               as String,
-      profile_image_url: null == profile_image_url
-          ? _value.profile_image_url
-          : profile_image_url // ignore: cast_nullable_to_non_nullable
+      profileImageUrl: null == profileImageUrl
+          ? _value.profileImageUrl
+          : profileImageUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      created_at: null == created_at
-          ? _value.created_at
-          : created_at // ignore: cast_nullable_to_non_nullable
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ));
   }
@@ -155,9 +155,9 @@ class _$SbMemberModelImpl implements _SbMemberModel {
   _$SbMemberModelImpl(
       {required this.id,
       required this.name,
-      required this.fcm_token,
-      required this.profile_image_url,
-      required this.created_at});
+      required this.fcmToken,
+      required this.profileImageUrl,
+      required this.createdAt});
 
   factory _$SbMemberModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$SbMemberModelImplFromJson(json);
@@ -167,15 +167,15 @@ class _$SbMemberModelImpl implements _SbMemberModel {
   @override
   final String name;
   @override
-  final String fcm_token;
+  final String fcmToken;
   @override
-  final String profile_image_url;
+  final String profileImageUrl;
   @override
-  final DateTime created_at;
+  final DateTime createdAt;
 
   @override
   String toString() {
-    return 'SbMemberModel(id: $id, name: $name, fcm_token: $fcm_token, profile_image_url: $profile_image_url, created_at: $created_at)';
+    return 'SbMemberModel(id: $id, name: $name, fcmToken: $fcmToken, profileImageUrl: $profileImageUrl, createdAt: $createdAt)';
   }
 
   @override
@@ -185,18 +185,18 @@ class _$SbMemberModelImpl implements _SbMemberModel {
             other is _$SbMemberModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.fcm_token, fcm_token) ||
-                other.fcm_token == fcm_token) &&
-            (identical(other.profile_image_url, profile_image_url) ||
-                other.profile_image_url == profile_image_url) &&
-            (identical(other.created_at, created_at) ||
-                other.created_at == created_at));
+            (identical(other.fcmToken, fcmToken) ||
+                other.fcmToken == fcmToken) &&
+            (identical(other.profileImageUrl, profileImageUrl) ||
+                other.profileImageUrl == profileImageUrl) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, name, fcm_token, profile_image_url, created_at);
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, fcmToken, profileImageUrl, createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -216,9 +216,9 @@ abstract class _SbMemberModel implements SbMemberModel {
   factory _SbMemberModel(
       {required final int id,
       required final String name,
-      required final String fcm_token,
-      required final String profile_image_url,
-      required final DateTime created_at}) = _$SbMemberModelImpl;
+      required final String fcmToken,
+      required final String profileImageUrl,
+      required final DateTime createdAt}) = _$SbMemberModelImpl;
 
   factory _SbMemberModel.fromJson(Map<String, dynamic> json) =
       _$SbMemberModelImpl.fromJson;
@@ -228,11 +228,11 @@ abstract class _SbMemberModel implements SbMemberModel {
   @override
   String get name;
   @override
-  String get fcm_token;
+  String get fcmToken;
   @override
-  String get profile_image_url;
+  String get profileImageUrl;
   @override
-  DateTime get created_at;
+  DateTime get createdAt;
   @override
   @JsonKey(ignore: true)
   _$$SbMemberModelImplCopyWith<_$SbMemberModelImpl> get copyWith =>

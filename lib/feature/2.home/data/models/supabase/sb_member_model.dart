@@ -9,9 +9,9 @@ class SbMemberModel with _$SbMemberModel {
   factory SbMemberModel({
     required int id,
     required String name,
-    required String fcm_token,
-    required String profile_image_url,
-    required DateTime created_at,
+    required String fcmToken,
+    required String profileImageUrl,
+    required DateTime createdAt,
     // required String createTime,
     // required String updateTime,
   }) = _SbMemberModel;

@@ -38,12 +38,12 @@ class SupabaseApiServiceImpl implements SupabaseApiService {
       // MemberModel member = MemberModel.fromJson(response);
       List<SbMemberModel> result = response.map((map) => SbMemberModel.fromJson(map)).toList();
       for(SbMemberModel args in result) {
-        print('>>> ${args.id}, ${args.name}, ${args.fcm_token}');
+        print('>>> ${args.id}, ${args.name}, ${args.fcmToken}');
         Member mem = Member(
           memberName: args.name,
           memberNumber: args.id,
-          memberId: args.fcm_token,
-          phone: args.profile_image_url,
+          memberId: args.fcmToken,
+          phone: args.profileImageUrl,
         );
 
         members.add(mem);
@@ -61,7 +61,7 @@ class SupabaseApiServiceImpl implements SupabaseApiService {
       // fcmToken update
 
       // final result = await updateMe({
-      //   'fcm_token': await FirebaseService().getToken(),
+      //   'fcmToken': await FirebaseService().getToken(),
       // });
 
       // if (result.isSuccess) {
@@ -125,7 +125,7 @@ class SupabaseApiServiceImpl implements SupabaseApiService {
       final response = await client
           .from('players')
           .select('*')
-          .eq('team_id', teamId); // ID 필드를 기준으로 필터링 (Supabase 테이블에 따라 조건이 달라질 수 있습니다)
+          .eq('teamId', teamId); // ID 필드를 기준으로 필터링 (Supabase 테이블에 따라 조건이 달라질 수 있습니다)
           // .single();
       print('>>>> response : $response');
       // MemberModel member = MemberModel.fromJson(response);
@@ -135,15 +135,15 @@ class SupabaseApiServiceImpl implements SupabaseApiService {
         print('>>> ${args.id}, ${args.name},');
         Player player = Player(
           id: args.id,
-          teamId: args.team_id ?? '',
-          teamName: args.team_name,
+          teamId: args.teamId ?? '',
+          teamName: args.teamName,
           name: args.name,
           backNumber: args.number ?? '',
           position: args.position,
           joindate: args.joindate ?? DateTime.now(),
           block: args.block ??  false,
-          updatedAt: args.updated_at,
-          createdAt: args.created_at,
+          updatedAt: args.updatedAt,
+          createdAt: args.createdAt,
         );
 
         players.add(player);

@@ -2,13 +2,19 @@ import 'package:footballclick/feature/5.team/presentation/provider/team_provider
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import '../../domain/entities/team.dart';
+
 part 'team_async_notifier.g.dart';
 
-@Riverpod(keepAlive: true)
+@Riverpod(keepAlive: false)
 class TeamAsyncNotifier extends _$TeamAsyncNotifier {
   @override
-  FutureOr<String?> build() {
-    return null;
+  FutureOr<List<Team>?> build() {
+    return fetchTeams(null);
+  }
+
+  Future<List<Team>?> fetchTeams(String? teamName) async {
+    return ref.read(getTeamsProvider)(teamName);
   }
 
   FutureOr<void> addTeam(Map<String, dynamic> request) async {
@@ -19,27 +25,46 @@ class TeamAsyncNotifier extends _$TeamAsyncNotifier {
         await addTeam(request);
       } catch (e) {
         if (e is PostgrestException) {
-          return e.message;
+          print(e.message);
         } else {
-          return e.toString(); // 일반 예외 메시지
+          print(e.toString());
         }
+        rethrow;
       }
-      return '등록 완료';
+      return null;
     });
   }
 
   FutureOr<void> findTeam(String teamName) async {
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
-      final findTeam = ref.read(findTeamProvider);
+      // final findTeam = ref.read(findTeamProvider);
       try {
-        return await findTeam(teamName);
+        // return await findTeam(teamName);
+        return fetchTeams(teamName);
       } catch (e) {
         if (e is PostgrestException) {
-          return e.details.toString();
+          print(e.message);
         } else {
-          return e.toString(); // 일반 예외 메시지
+          print(e.toString());
         }
+        rethrow;
+      }
+    });
+  }
+
+  FutureOr<void> getTeamList() async {
+    state = const AsyncValue.loading();
+    state = await AsyncValue.guard(() async {
+      try {
+        return fetchTeams(null);
+      } catch (e) {
+        if (e is PostgrestException) {
+          print(e.message);
+        } else {
+          print(e.toString());
+        }
+        rethrow;
       }
     });
   }

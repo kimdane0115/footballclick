@@ -50,9 +50,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               'position': 'FW',
               'joindate': DateTime.now().toIso8601String(),
               'block': false,
-              'team_id': '1',
-              'team_name': 'borussia',
-              // 'created_at': DateTime.now().toIso8601String(),
+              'teamId': '1',
+              'teamName': 'borussia',
+              // 'createdAt': DateTime.now().toIso8601String(),
             };
             ref.read(playerAsyncNotifierProvider('1').notifier).addPlayer(request, '1');
             // ref.read(playerAsyncNotifierProvider.notifier).getPlayers('1');
@@ -257,9 +257,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               onPressed: () {
                 final request = {
                   'name': '호날두',
-                  'fcm_token': '123456',
-                  'profile_image_url': '1234567',
-                  'created_at': DateTime.now().toIso8601String(),
+                  'fcmToken': '123456',
+                  'profileImageUrl': '1234567',
+                  'createdAt': DateTime.now().toIso8601String(),
                 };
                 ref.read(memberAsyncNotifierProvider.notifier).addMember(request);
               },
@@ -269,9 +269,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               onPressed: () {
                 final request = {
                   // 'name': '메시',
-                  'fcm_token': 'adkfkj',
-                  'profile_image_url': 'https://www.ddd.com',
-                  'updated_at': DateTime.now().toIso8601String(),
+                  'fcmToken': 'adkfkj',
+                  'profileImageUrl': 'https://www.ddd.com',
+                  'updatedAt': DateTime.now().toIso8601String(),
                 };
                 ref.read(memberAsyncNotifierProvider.notifier).updateMember(request, 2);
               },
@@ -364,9 +364,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           onPressed: () {
             final request = {
               'name': '호날두',
-              'fcm_token': '123456',
-              'profile_image_url': '1234567',
-              'created_at': DateTime.now().toIso8601String(),
+              'fcmToken': '123456',
+              'profileImageUrl': '1234567',
+              'createdAt': DateTime.now().toIso8601String(),
             };
             ref.read(addMemberProvider).call(request);
           },
@@ -376,9 +376,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           onPressed: () {
             final request = {
               // 'name': '메시',
-              'fcm_token': 'adkfkj',
-              'profile_image_url': 'https://www.ddd.com',
-              'updated_at': DateTime.now().toIso8601String(),
+              'fcmToken': 'adkfkj',
+              'profileImageUrl': 'https://www.ddd.com',
+              'updatedAt': DateTime.now().toIso8601String(),
             };
             // final request = {
             //   'region' : '111111'

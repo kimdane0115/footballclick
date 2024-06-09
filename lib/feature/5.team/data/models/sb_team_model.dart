@@ -9,11 +9,11 @@ class SbTeamModel with _$SbTeamModel {
   @JsonSerializable(includeIfNull: false, explicitToJson: true)
   factory SbTeamModel({
     required int id,
-    required String team_name,
+    required String teamName,
     required String region,
-    int? member_count,
-    required DateTime updated_at,
-    required DateTime created_at,
+    int? memberCount,
+    required DateTime updatedAt,
+    required DateTime createdAt,
   }) = _SbTeamModel;
 
   factory SbTeamModel.fromJson(Map<String, dynamic> json) => _$SbTeamModelFromJson(json);

@@ -56,8 +56,8 @@ class _SignUpPlayerScreenState extends ConsumerState<SignUpPlayerScreen> {
           ElevatedButton(
             onPressed: () async {
               // String email = ref.read(signUpScreenNotifierProvider).email;
-              // String idToken = ref.read(signUpScreenNotifierProvider).id_token ?? '';
-              // String accessToken = ref.read(signUpScreenNotifierProvider).access_token ?? '';
+              // String idToken = ref.read(signUpScreenNotifierProvider).idToken ?? '';
+              // String accessToken = ref.read(signUpScreenNotifierProvider).accessToken ?? '';
               // final res = await Supabase.instance.client.auth.signInWithIdToken(
               //     provider: OAuthProvider.google,
               //     idToken: idToken,
@@ -67,11 +67,11 @@ class _SignUpPlayerScreenState extends ConsumerState<SignUpPlayerScreen> {
               //   'uuid': res.user?.id,
               //   'email': email,
               //   'name': '호날두',
-              //   'fcm_token': '123456',
-              //   'profile_image_url': '1234567',
-              //   'id_token': idToken,
-              //   'access_token': accessToken,
-              //   // 'created_at': DateTime.now().toIso8601String(),
+              //   'fcmToken': '123456',
+              //   'profileImageUrl': '1234567',
+              //   'idToken': idToken,
+              //   'accessToken': accessToken,
+              //   // 'createdAt': DateTime.now().toIso8601String(),
               // };
               
               // ref.read(signAsyncNotifierProvider.notifier).addProfie(request);

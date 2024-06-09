@@ -6,12 +6,12 @@ part of 'team_async_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$teamAsyncNotifierHash() => r'97c9ade3e137e3ff8ac1ccf949deb0074068d0fc';
+String _$teamAsyncNotifierHash() => r'c92816fa7b8a7cc16bb0471f35508bad33c88174';
 
 /// See also [TeamAsyncNotifier].
 @ProviderFor(TeamAsyncNotifier)
 final teamAsyncNotifierProvider =
-    AsyncNotifierProvider<TeamAsyncNotifier, String?>.internal(
+    AutoDisposeAsyncNotifierProvider<TeamAsyncNotifier, List<Team>?>.internal(
   TeamAsyncNotifier.new,
   name: r'teamAsyncNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -21,6 +21,6 @@ final teamAsyncNotifierProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$TeamAsyncNotifier = AsyncNotifier<String?>;
+typedef _$TeamAsyncNotifier = AutoDisposeAsyncNotifier<List<Team>?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

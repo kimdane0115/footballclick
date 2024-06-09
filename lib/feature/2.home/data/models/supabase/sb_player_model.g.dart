@@ -9,8 +9,8 @@ part of 'sb_player_model.dart';
 _$SbPlayerModelImpl _$$SbPlayerModelImplFromJson(Map<String, dynamic> json) =>
     _$SbPlayerModelImpl(
       id: (json['id'] as num).toInt(),
-      team_id: json['team_id'] as String?,
-      team_name: json['team_name'] as String,
+      teamId: json['teamId'] as String?,
+      teamName: json['teamName'] as String,
       name: json['name'] as String,
       number: json['number'] as String?,
       position: json['position'] as String,
@@ -18,8 +18,8 @@ _$SbPlayerModelImpl _$$SbPlayerModelImplFromJson(Map<String, dynamic> json) =>
           ? null
           : DateTime.parse(json['joindate'] as String),
       block: json['block'] as bool?,
-      updated_at: DateTime.parse(json['updated_at'] as String),
-      created_at: DateTime.parse(json['created_at'] as String),
+      updatedAt: DateTime.parse(json['updatedAt'] as String),
+      createdAt: DateTime.parse(json['createdAt'] as String),
     );
 
 Map<String, dynamic> _$$SbPlayerModelImplToJson(_$SbPlayerModelImpl instance) {
@@ -33,14 +33,14 @@ Map<String, dynamic> _$$SbPlayerModelImplToJson(_$SbPlayerModelImpl instance) {
     }
   }
 
-  writeNotNull('team_id', instance.team_id);
-  val['team_name'] = instance.team_name;
+  writeNotNull('teamId', instance.teamId);
+  val['teamName'] = instance.teamName;
   val['name'] = instance.name;
   writeNotNull('number', instance.number);
   val['position'] = instance.position;
   writeNotNull('joindate', instance.joindate?.toIso8601String());
   writeNotNull('block', instance.block);
-  val['updated_at'] = instance.updated_at.toIso8601String();
-  val['created_at'] = instance.created_at.toIso8601String();
+  val['updatedAt'] = instance.updatedAt.toIso8601String();
+  val['createdAt'] = instance.createdAt.toIso8601String();
   return val;
 }

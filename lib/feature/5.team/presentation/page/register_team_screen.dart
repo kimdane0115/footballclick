@@ -25,13 +25,13 @@ class _RegisterTeamScreenState extends ConsumerState<RegisterTeamScreen> {
                 return Dialog(
                   child: Column(
                     children: [
-                      Text(data ?? ''),
-                      CloseButton(
-                        onPressed: () {
-                          context.pop();
-                          if (data == '등록 완료') context.pop();
-                        },
-                      ),
+                      // Text(data ?? ''),
+                      // CloseButton(
+                      //   onPressed: () {
+                      //     context.pop();
+                      //     if (data == '등록 완료') context.pop();
+                      //   },
+                      // ),
                     ],
                   ),
                 );
@@ -83,7 +83,7 @@ class _RegisterTeamScreenState extends ConsumerState<RegisterTeamScreen> {
               String? teamName = ref.read(teamRegisterNotifierProvider).teamName;
               String region = ref.read(teamRegisterNotifierProvider).region;
               final request = {
-                'team_name': teamName,
+                'teamName': teamName,
                 'region': region,
               };
               ref.read(teamAsyncNotifierProvider.notifier).addTeam(request);

@@ -5,17 +5,17 @@ part 'sb_profile_model.g.dart';
 
 @freezed
 class SbProfileModel with _$SbProfileModel {
-
+  @JsonSerializable(includeIfNull: false, explicitToJson: true)
   factory SbProfileModel({
     required int id,
     required String email,
     required String name,
-    required String profile_image_url,
-    required String access_token,
-    required String id_token,
-    required String fcm_token,
-    required DateTime created_at,
-    required DateTime updated_at,
+    required String profileImageUrl,
+    required String accessToken,
+    required String idToken,
+    required String fcmToken,
+    required DateTime createdAt,
+    required DateTime updatedAt,
   }) = _SbProfileModel;
 
   factory SbProfileModel.fromJson(Map<String, dynamic> json) => _$SbProfileModelFromJson(json);

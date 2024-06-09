@@ -1,9 +1,7 @@
 import 'package:footballclick/core/constants/enums.dart';
 
 import '../../../../core/constants/index.dart';
-import '../../../2.home/presentation/provider/player_async_notifier.dart';
 import '../../../5.team/presentation/provider/team_register_notifier.dart';
-import '../provider/supabase_auth_provider.async_notifier.dart';
 
 class SignUpAdminScreen extends ConsumerStatefulWidget {
   const SignUpAdminScreen({super.key});
@@ -93,14 +91,14 @@ class _SignUpAdminScreenState extends ConsumerState<SignUpAdminScreen> {
               onPressed: () {
                 print('>>>> teamName : ${ref.read(teamRegisterNotifierProvider).teamName}');
                 // const HomeScreenRoute().go(context);
-                final request = {
-                  'name': nameController.text,
-                  'position': positionController.text,
-                  'teamRole': AdminKind.values[_value!].name,
-                  'team_name': ref.read(teamRegisterNotifierProvider).teamName,
-                };
-                ref.read(playerAsyncNotifierProvider('').notifier).addPlayer(request, '');
-                ref.read(supaBaseAuthAsyncNotifierProvider.notifier).signUpWithGoogle();
+                // final request = {
+                //   'name': nameController.text,
+                //   'position': positionController.text,
+                //   'teamRole': AdminKind.values[_value!].name,
+                //   'teamName': ref.read(teamRegisterNotifierProvider).teamName,
+                // };
+                // ref.read(playerAsyncNotifierProvider('').notifier).addPlayer(request, '');
+                // ref.read(supaBaseAuthAsyncNotifierProvider.notifier).signUpWithGoogle();
               },
               child: const Text('가입완료'),
             ),
