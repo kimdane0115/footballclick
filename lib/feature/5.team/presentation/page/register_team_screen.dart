@@ -1,6 +1,7 @@
 import 'package:footballclick/feature/5.team/presentation/provider/team_async_notifier.dart';
 import 'package:footballclick/feature/5.team/presentation/provider/team_register_notifier.dart';
 
+import '../../../../core/constants/enums.dart';
 import '../../../../core/constants/index.dart';
 
 class RegisterTeamScreen extends ConsumerStatefulWidget {
@@ -11,12 +12,18 @@ class RegisterTeamScreen extends ConsumerStatefulWidget {
 }
 
 class _RegisterTeamScreenState extends ConsumerState<RegisterTeamScreen> {
+  int? _valueTeamRegion = 0;
+  int? _valueAge = 0;
+
   @override
   Widget build(BuildContext context) {
 
     ref.listen(
       teamAsyncNotifierProvider,
       (prev, next) {
+        if (next.hasError) {
+          print('>>>>>>>>>>>>>>>>>>>> error!!! ${next.hasError}');
+        }
         next.whenOrNull(
           data: (data) async {
             showDialog(
@@ -66,16 +73,50 @@ class _RegisterTeamScreenState extends ConsumerState<RegisterTeamScreen> {
             },
           ),
           const Text('지역'),
-          TextFormField(
-            onChanged: (value) {
-              ref.read(teamRegisterNotifierProvider.notifier).setRegion(value);
-            },
+          // TextFormField(
+          //   onChanged: (value) {
+          //     ref.read(teamRegisterNotifierProvider.notifier).setRegion(value);
+          //   },
+          // ),
+          Wrap(
+            spacing: 5.0,
+            children: List<Widget>.generate(
+              TeamRegion.values.length,
+              (int index) {
+                return ChoiceChip(
+                  // label: Text('Item $index'),
+                  label: Text(TeamRegion.values[index].name),
+                  selected: _valueTeamRegion == index,
+                  onSelected: (bool selected) {
+                    setState(() {
+                      _valueTeamRegion = selected ? index : null;
+                      ref
+                          .read(teamRegisterNotifierProvider.notifier)
+                          .setRegion(TeamRegion.values[_valueTeamRegion!].name);
+                    });
+                  },
+                );
+              },
+            ).toList(),
           ),
           const Text('연령대'),
-          TextFormField(
-            onChanged: (value) {
-              
-            },
+          Wrap(
+            spacing: 5.0,
+            children: List<Widget>.generate(
+              6,
+              (int index) {
+                return ChoiceChip(
+                  // label: Text('Item $index'),
+                  label: Text(MemberAge.values[index].name),
+                  selected: _valueAge == index,
+                  onSelected: (bool selected) {
+                    setState(() {
+                      _valueAge = selected ? index : null;
+                    });
+                  },
+                );
+              },
+            ).toList(),
           ),
           const SizedBox(height: 20,),
           ElevatedButton(
@@ -86,7 +127,26 @@ class _RegisterTeamScreenState extends ConsumerState<RegisterTeamScreen> {
                 'teamName': teamName,
                 'region': region,
               };
-              ref.read(teamAsyncNotifierProvider.notifier).addTeam(request);
+              ref.read(teamAsyncNotifierProvider.notifier).addTeam(request).then((value) {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return Dialog(
+                      child: Column(
+                        children: [
+                          const Text('등록 완료'),
+                          CloseButton(
+                            onPressed: () {
+                              context.pop();
+                              // if (data == '등록 완료') context.pop();
+                            },
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                );
+              });
             },
             child: const Text('등록 완료'),
           ),

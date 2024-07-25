@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 
 class Team {
   final int? id;
@@ -9,13 +8,15 @@ class Team {
   Team({required this.id, this.teamName, required this.region, required this.memberCount});
 
   Team copyWith({
-    ValueGetter<int?>? id,
+    // ValueGetter<int?>? id,
+    int? id,
     String? teamName,
     String? region,
     int? memberCount,
   }) {
     return Team(
-      id: id != null ? id() : this.id,
+      // id: id != null ? id() : this.id,
+      id: id ?? this.id,
       teamName: teamName ?? this.teamName,
       region: region ?? this.region,
       memberCount: memberCount ?? this.memberCount,

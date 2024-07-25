@@ -40,8 +40,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           ],
         ),
         // body: homeTest(),
-        body: homeTest2(),
-        // body: body(context),
+        // body: homeTest2(),
+        body: body(context),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             final request = {
@@ -87,8 +87,19 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               ),
               child: _matchDay(),
             ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Container(
+              padding: const EdgeInsets.all(15),
+              height: 250,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: _matchDay(),
+            ),
           )
-          
         ],
       ),
     );

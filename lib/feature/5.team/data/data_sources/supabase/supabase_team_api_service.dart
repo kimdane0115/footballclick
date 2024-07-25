@@ -38,7 +38,8 @@ class SupabaseTeamApiServiceImpl implements SupabaseTeamApiService {
       final client = Supabase.instance.client;
       final response = teamName == null || teamName.isEmpty
           ? await client.from('team').select()
-          : await client.from('team').select().eq('teamName', teamName);
+          // : await client.from('team').select().eq('teamName', teamName);
+          : await client.from('team').select().like('teamName', '%$teamName%');
 
       final result = response.map((map) => SbTeamModel.fromJson(map)).toList();
       return result;

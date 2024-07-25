@@ -11,14 +11,23 @@ class SignUpAdminScreen extends ConsumerStatefulWidget {
 }
 
 class _SignUpAdminScreenState extends ConsumerState<SignUpAdminScreen> {
-  int? _value = 1;
+  int? _value = 0;
+  int? _valueAge = 0;
+  int? _valuePosition = 0;
   TextEditingController nameController = TextEditingController();
   TextEditingController ageController = TextEditingController();
   TextEditingController positionController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        // leading: IconButton(
+        //   onPressed: () {
+        //     context.pop();
+        //   },
+        //   icon: const Icon(Icons.arrow_back),
+        // ),
+      ),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(16),
@@ -44,20 +53,27 @@ class _SignUpAdminScreenState extends ConsumerState<SignUpAdminScreen> {
                 child: const Text('팀 찾기'),
               ),
               const SizedBox(width: 20,),
-              ElevatedButton(
-                onPressed: () {
-                  const RegisterTeamScreenRoute().push(context);
-                },
-                child: const Text('팀 등록'),
+              Visibility(
+                visible: _value == 0,
+                child: ElevatedButton(
+                  onPressed: () {
+                    const RegisterTeamScreenRoute().push(context);
+                  },
+                  child: const Text('팀 등록'),
+                ),
               ),
             ],
           ),
           const SizedBox(height: 20,),
+          const Text('이름'),
+          TextFormField(
+            controller: nameController,
+          ),
           const Text('직책'),
           Wrap(
             spacing: 5.0,
             children: List<Widget>.generate(
-              3,
+              2,
               (int index) {
                 return ChoiceChip(
                   // label: Text('Item $index'),
@@ -72,17 +88,49 @@ class _SignUpAdminScreenState extends ConsumerState<SignUpAdminScreen> {
               },
             ).toList(),
           ),
-          const Text('이름'),
-          TextFormField(
-            controller: nameController,
-          ),
           const Text('나이'),
-          TextFormField(
-            controller: ageController,
+          // TextFormField(
+          //   controller: ageController,
+          // ),
+          Wrap(
+            spacing: 5.0,
+            children: List<Widget>.generate(
+              6,
+              (int index) {
+                return ChoiceChip(
+                  // label: Text('Item $index'),
+                  label: Text(MemberAge.values[index].name),
+                  selected: _valueAge == index,
+                  onSelected: (bool selected) {
+                    setState(() {
+                      _valueAge = selected ? index : null;
+                    });
+                  },
+                );
+              },
+            ).toList(),
           ),
           const Text('포지션'),
-          TextFormField(
-            controller: positionController,
+          // TextFormField(
+          //   controller: positionController,
+          // ),
+          Wrap(
+            spacing: 5.0,
+            children: List<Widget>.generate(
+              5,
+              (int index) {
+                return ChoiceChip(
+                  // label: Text('Item $index'),
+                  label: Text(PlayerPosition.values[index].name),
+                  selected: _valuePosition == index,
+                  onSelected: (bool selected) {
+                    setState(() {
+                      _valuePosition = selected ? index : null;
+                    });
+                  },
+                );
+              },
+            ).toList(),
           ),
           const SizedBox(height: 50,),
           SizedBox(

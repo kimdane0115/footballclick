@@ -15,7 +15,15 @@ class _FindTeamScreenState extends ConsumerState<FindTeamScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            context.pop();
+            // ref.invalidate(teamAsyncNotifierProvider);
+          },
+          icon: const Icon(Icons.arrow_back),
+        ),
+      ),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(16),
@@ -80,12 +88,21 @@ class _FindTeamScreenState extends ConsumerState<FindTeamScreen> {
             builder:(context, ref, child) {
               return ref.watch(teamAsyncNotifierProvider).when(
                 data: (data) {
-                  if (data!.isEmpty) return const Text('검색 결과가 존재하지 않습니다.');
+                  if (data == null) return const SizedBox.shrink();
+                  if (data.isEmpty) return const Text('검색 결과가 존재하지 않습니다.');
 
                   return ListView.builder(
                     itemCount: data.length,
                     itemBuilder: (context, index) {
-                      return Text(data[index].teamName ?? '', style: const TextStyle(fontSize: 24),);
+                      return InkWell(
+                        onTap: () {
+                          controller.text = data[index].teamName!;
+                        },
+                        child: Text(
+                          data[index].teamName ?? '',
+                          style: const TextStyle(fontSize: 24),
+                        ),
+                      );
                     },
                   );
                 },

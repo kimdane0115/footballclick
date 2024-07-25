@@ -6,18 +6,23 @@ import '../../domain/entities/team.dart';
 
 part 'team_async_notifier.g.dart';
 
-@Riverpod(keepAlive: false)
+// @Riverpod(keepAlive: true)
+@riverpod
 class TeamAsyncNotifier extends _$TeamAsyncNotifier {
   @override
-  FutureOr<List<Team>?> build() {
-    return fetchTeams(null);
+  FutureOr<List<Team>?> build() async {
+    ref.onDispose(() {
+      print('[TeamAsyncNotifierProvider] disposed');
+    });
+    return await fetchTeams(null);
+    // return null;
   }
 
   Future<List<Team>?> fetchTeams(String? teamName) async {
     return ref.read(getTeamsProvider)(teamName);
   }
 
-  FutureOr<void> addTeam(Map<String, dynamic> request) async {
+  Future<void> addTeam(Map<String, dynamic> request) async {
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final addTeam = ref.read(addTeamProvider);

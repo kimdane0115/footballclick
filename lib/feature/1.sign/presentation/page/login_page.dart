@@ -27,10 +27,9 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: body(),
-      )
+    return Scaffold(
+      appBar: AppBar(),
+      body: SafeArea(child: body()),
     );
   }
 
@@ -175,7 +174,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
   Future<void> _signUp() async {
     if (mounted) {
-      const SignUpScreenRoute().go(context);
+      // const SignUpScreenRoute().go(context);
+      const SignUpAdminScreenRoute().go(context);
     }
   }
 }
