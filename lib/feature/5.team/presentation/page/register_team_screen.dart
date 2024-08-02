@@ -13,7 +13,8 @@ class RegisterTeamScreen extends ConsumerStatefulWidget {
 
 class _RegisterTeamScreenState extends ConsumerState<RegisterTeamScreen> {
   int? _valueTeamRegion = 0;
-  int? _valueAge = 0;
+  int? _valueAgeMin = 0;
+  int? _valueAgeMax = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +100,8 @@ class _RegisterTeamScreenState extends ConsumerState<RegisterTeamScreen> {
               },
             ).toList(),
           ),
-          const Text('연령대'),
+          const SizedBox(height: 20,),
+          const Text('연령대 (최소)'),
           Wrap(
             spacing: 5.0,
             children: List<Widget>.generate(
@@ -108,10 +110,30 @@ class _RegisterTeamScreenState extends ConsumerState<RegisterTeamScreen> {
                 return ChoiceChip(
                   // label: Text('Item $index'),
                   label: Text(MemberAge.values[index].name),
-                  selected: _valueAge == index,
+                  selected: _valueAgeMin == index,
                   onSelected: (bool selected) {
                     setState(() {
-                      _valueAge = selected ? index : null;
+                      _valueAgeMin = selected ? index : null;
+                    });
+                  },
+                );
+              },
+            ).toList(),
+          ),
+          const SizedBox(height: 20,),
+          const Text('연령대 (최대)'),
+          Wrap(
+            spacing: 5.0,
+            children: List<Widget>.generate(
+              6,
+              (int index) {
+                return ChoiceChip(
+                  // label: Text('Item $index'),
+                  label: Text(MemberAgeMax.values[index].name),
+                  selected: _valueAgeMax == index,
+                  onSelected: (bool selected) {
+                    setState(() {
+                      _valueAgeMax = selected ? index : null;
                     });
                   },
                 );

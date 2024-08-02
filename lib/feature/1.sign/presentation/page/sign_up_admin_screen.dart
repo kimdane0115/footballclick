@@ -1,4 +1,5 @@
 import 'package:footballclick/core/constants/enums.dart';
+import 'package:footballclick/feature/1.sign/presentation/provider/sign_up_screen_provider_notifier.dart';
 
 import '../../../../core/constants/index.dart';
 import '../../../5.team/presentation/provider/team_register_notifier.dart';
@@ -48,7 +49,11 @@ class _SignUpAdminScreenState extends ConsumerState<SignUpAdminScreen> {
             children: [
               ElevatedButton(
                 onPressed: () {
-                  const FindTeamScreenRoute().push(context);
+                  ref.read(signUpScreenProviderNotifierProvider.notifier).setTeamName('');
+                  const FindTeamScreenRoute().push(context).then((onValue) {
+                    print('>>>>>>> value : $onValue');
+                  });
+                  
                 },
                 child: const Text('팀 찾기'),
               ),
@@ -137,7 +142,7 @@ class _SignUpAdminScreenState extends ConsumerState<SignUpAdminScreen> {
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
-                print('>>>> teamName : ${ref.read(teamRegisterNotifierProvider).teamName}');
+                print('>>>> teamName : ${ref.read(signUpScreenProviderNotifierProvider).teamName}');
                 // const HomeScreenRoute().go(context);
                 // final request = {
                 //   'name': nameController.text,

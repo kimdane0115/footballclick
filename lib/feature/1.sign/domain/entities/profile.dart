@@ -2,6 +2,7 @@ class Profile {
   final int? id;
   final String email;
   final String name;
+  final String teamName;
   final String profileImageUrl;
   final String fcmToken;
   final String? accessToken;
@@ -11,6 +12,7 @@ class Profile {
     this.id,
     required this.email,
     required this.name,
+    required this.teamName,
     required this.profileImageUrl,
     required this.fcmToken,
     this.accessToken,
@@ -22,6 +24,7 @@ class Profile {
     int? id,
     String? email,
     String? name,
+    String? teamName,
     String? profileImageUrl,
     String? fcmToken,
     String? accessToken,
@@ -32,6 +35,7 @@ class Profile {
       id: id ?? this.id,
       email: email ?? this.email,
       name: name ?? this.name,
+      teamName: teamName ?? this.teamName,
       profileImageUrl: profileImageUrl ?? this.profileImageUrl,
       fcmToken: fcmToken ?? this.fcmToken,
       accessToken: accessToken ?? this.accessToken,

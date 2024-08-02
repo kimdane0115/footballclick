@@ -1,5 +1,6 @@
+// import 'package:footballclick/feature/1.sign/presentation/provider/sign_up_screen_provider_notifier.dart';
 import 'package:footballclick/feature/5.team/presentation/provider/team_async_notifier.dart';
-import 'package:footballclick/feature/5.team/presentation/provider/team_register_notifier.dart';
+// import 'package:footballclick/feature/5.team/presentation/provider/team_register_notifier.dart';
 
 import '../../../../core/constants/index.dart';
 
@@ -18,7 +19,7 @@ class _FindTeamScreenState extends ConsumerState<FindTeamScreen> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
-            context.pop();
+            context.pop(controller.text);
             // ref.invalidate(teamAsyncNotifierProvider);
           },
           icon: const Icon(Icons.arrow_back),
@@ -79,10 +80,30 @@ class _FindTeamScreenState extends ConsumerState<FindTeamScreen> {
         ElevatedButton(
           onPressed: () async {
             // String findTeamName = ref.read(teamFindNotifierProvider);
-            ref.read(teamAsyncNotifierProvider.notifier).findTeam(controller.text);
+            ref
+                .read(teamAsyncNotifierProvider.notifier)
+                .findTeam(controller.text);
           },
-          child: ref.watch(teamRegisterNotifierProvider.select((value) => value.teamName)) != null ? const Text('선택') : const Text('검색'),
+          // child: ref.watch(teamRegisterNotifierProvider
+          //             .select((value) => value.teamName)) !=
+          //         null
+          //     ? const Text('선택')
+          //     : const Text('검색'),
+          child:
+              controller.text.isNotEmpty
+                  ? const Text('선택')
+                  : const Text('검색'),
         ),
+        // ElevatedButton(
+        //   onPressed: () async {
+        //     // String findTeamName = ref.read(teamFindNotifierProvider);
+        //     // ref
+        //     //     .read(teamAsyncNotifierProvider.notifier)
+        //     //     .findTeam(controller.text);
+        //     ref.read(signUpScreenProviderNotifierProvider.notifier).setTeamName(controller.text);
+        //   },
+        //   child: const Text('선택'),
+        // ),
         Expanded(
           child: Consumer(
             builder:(context, ref, child) {
@@ -97,6 +118,9 @@ class _FindTeamScreenState extends ConsumerState<FindTeamScreen> {
                       return InkWell(
                         onTap: () {
                           controller.text = data[index].teamName!;
+                          setState(() {
+                            
+                          });
                         },
                         child: Text(
                           data[index].teamName ?? '',
