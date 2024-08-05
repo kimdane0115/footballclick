@@ -1,4 +1,5 @@
 // import 'package:footballclick/feature/1.sign/presentation/provider/sign_up_screen_provider_notifier.dart';
+import 'package:footballclick/feature/1.sign/presentation/provider/sign_up_screen_provider_notifier.dart';
 import 'package:footballclick/feature/5.team/presentation/provider/team_async_notifier.dart';
 // import 'package:footballclick/feature/5.team/presentation/provider/team_register_notifier.dart';
 
@@ -24,6 +25,17 @@ class _FindTeamScreenState extends ConsumerState<FindTeamScreen> {
           },
           icon: const Icon(Icons.arrow_back),
         ),
+        actions: [
+          ElevatedButton(
+            onPressed: () {
+              ref
+                  .read(signUpScreenProviderNotifierProvider.notifier)
+                  .setTeamName(controller.text);
+              context.pop();
+            },
+            child: const Text('다음'),
+          ),
+        ],
       ),
       body: SafeArea(
         child: Padding(
@@ -89,10 +101,11 @@ class _FindTeamScreenState extends ConsumerState<FindTeamScreen> {
           //         null
           //     ? const Text('선택')
           //     : const Text('검색'),
-          child:
-              controller.text.isNotEmpty
-                  ? const Text('선택')
-                  : const Text('검색'),
+          // child:
+          //     controller.text.isNotEmpty
+          //         ? const Text('선택')
+          //         : const Text('검색'),
+          child: const Text('검색'),
         ),
         // ElevatedButton(
         //   onPressed: () async {

@@ -70,6 +70,8 @@ class _SignUpAdminScreenState extends ConsumerState<SignUpAdminScreen> {
             ],
           ),
           const SizedBox(height: 20,),
+          Text(ref.watch(signUpScreenProviderNotifierProvider).teamName),
+          const SizedBox(height: 20,),
           const Text('이름'),
           TextFormField(
             controller: nameController,
