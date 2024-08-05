@@ -7,12 +7,12 @@ part of 'sign_up_screen_provider_notifier.dart';
 // **************************************************************************
 
 String _$signUpScreenProviderNotifierHash() =>
-    r'649b78622c4626d840ab07705393e888343ee7f0';
+    r'48ea611f488e123453decde30f628eea4eb3d096';
 
 /// See also [SignUpScreenProviderNotifier].
 @ProviderFor(SignUpScreenProviderNotifier)
 final signUpScreenProviderNotifierProvider =
-    NotifierProvider<SignUpScreenProviderNotifier, Profile>.internal(
+    AutoDisposeNotifierProvider<SignUpScreenProviderNotifier, Profile>.internal(
   SignUpScreenProviderNotifier.new,
   name: r'signUpScreenProviderNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -22,6 +22,6 @@ final signUpScreenProviderNotifierProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$SignUpScreenProviderNotifier = Notifier<Profile>;
+typedef _$SignUpScreenProviderNotifier = AutoDisposeNotifier<Profile>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

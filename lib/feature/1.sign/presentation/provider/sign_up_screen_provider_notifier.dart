@@ -6,7 +6,8 @@ import '../../domain/entities/profile.dart';
 
 part 'sign_up_screen_provider_notifier.g.dart';
 
-@Riverpod(keepAlive: true)
+// @Riverpod(keepAlive: true)
+@riverpod
 class SignUpScreenProviderNotifier extends _$SignUpScreenProviderNotifier {
   @override
   Profile build() {
