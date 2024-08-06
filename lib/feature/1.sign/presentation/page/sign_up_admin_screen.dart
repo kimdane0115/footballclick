@@ -16,8 +16,7 @@ class _SignUpAdminScreenState extends ConsumerState<SignUpAdminScreen> {
   int? _valueAge = 0;
   int? _valuePosition = 0;
   TextEditingController nameController = TextEditingController();
-  TextEditingController ageController = TextEditingController();
-  TextEditingController positionController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +30,7 @@ class _SignUpAdminScreenState extends ConsumerState<SignUpAdminScreen> {
       ),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: body(),
         ),
       ),
@@ -75,6 +74,9 @@ class _SignUpAdminScreenState extends ConsumerState<SignUpAdminScreen> {
           const Text('이름'),
           TextFormField(
             controller: nameController,
+            onChanged: (value) {
+              ref.read(signUpScreenProviderNotifierProvider.notifier).setName(value);
+            },
           ),
           const Text('직책'),
           Wrap(
@@ -101,9 +103,6 @@ class _SignUpAdminScreenState extends ConsumerState<SignUpAdminScreen> {
             ).toList(),
           ),
           const Text('나이'),
-          // TextFormField(
-          //   controller: ageController,
-          // ),
           Wrap(
             spacing: 5.0,
             children: List<Widget>.generate(
@@ -126,9 +125,6 @@ class _SignUpAdminScreenState extends ConsumerState<SignUpAdminScreen> {
             ).toList(),
           ),
           const Text('포지션'),
-          // TextFormField(
-          //   controller: positionController,
-          // ),
           Wrap(
             spacing: 5.0,
             children: List<Widget>.generate(
@@ -155,6 +151,7 @@ class _SignUpAdminScreenState extends ConsumerState<SignUpAdminScreen> {
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
+                print('>>>> Name : ${ref.read(signUpScreenProviderNotifierProvider).name}');
                 print('>>>> teamName : ${ref.read(signUpScreenProviderNotifierProvider).teamName}');
                 print('>>>> teamAdmin : ${ref.read(signUpScreenProviderNotifierProvider).teamAdmin}');
                 print('>>>> Age : ${ref.read(signUpScreenProviderNotifierProvider).age}');
