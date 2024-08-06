@@ -14,6 +14,8 @@ class FindTeamScreen extends ConsumerStatefulWidget {
 
 class _FindTeamScreenState extends ConsumerState<FindTeamScreen> {
   TextEditingController controller = TextEditingController();
+  int teamId = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,6 +30,7 @@ class _FindTeamScreenState extends ConsumerState<FindTeamScreen> {
         actions: [
           ElevatedButton(
             onPressed: () {
+              print('>>>>>> teamId : $teamId');
               ref
                   .read(signUpScreenProviderNotifierProvider.notifier)
                   .setTeamName(controller.text);
@@ -47,38 +50,9 @@ class _FindTeamScreenState extends ConsumerState<FindTeamScreen> {
   }
 
   Widget body() {
-    // ref.listen(
-    //   teamAsyncNotifierProvider,
-    //   (prev, next) {
-    //     next.whenOrNull(
-    //       data: (data) async {
-    //         showDialog(
-    //           context: context,
-    //           builder: (context) {
-    //             return Dialog(
-    //               child: Column(
-    //                 children: [
-    //                   Text(data ?? ''),
-    //                   CloseButton(
-    //                     onPressed: () {
-    //                       ref.read(teamRegisterNotifierProvider.notifier).setTeamName(data);
-    //                       context.pop();
-    //                     },
-    //                   ),
-    //                 ],
-    //               ),
-    //             );
-    //           },
-    //         );
-    //       },
-    //     );
-    //   }
-    // );
 
     // final res = ref.watch(teamAsyncNotifierProvider);
-
     return Column(
-      // mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text('팀 이름'),
@@ -107,16 +81,6 @@ class _FindTeamScreenState extends ConsumerState<FindTeamScreen> {
           //         : const Text('검색'),
           child: const Text('검색'),
         ),
-        // ElevatedButton(
-        //   onPressed: () async {
-        //     // String findTeamName = ref.read(teamFindNotifierProvider);
-        //     // ref
-        //     //     .read(teamAsyncNotifierProvider.notifier)
-        //     //     .findTeam(controller.text);
-        //     ref.read(signUpScreenProviderNotifierProvider.notifier).setTeamName(controller.text);
-        //   },
-        //   child: const Text('선택'),
-        // ),
         Expanded(
           child: Consumer(
             builder:(context, ref, child) {
@@ -130,6 +94,7 @@ class _FindTeamScreenState extends ConsumerState<FindTeamScreen> {
                     itemBuilder: (context, index) {
                       return InkWell(
                         onTap: () {
+                          teamId = data[index].id!;
                           controller.text = data[index].teamName!;
                           setState(() {
                             

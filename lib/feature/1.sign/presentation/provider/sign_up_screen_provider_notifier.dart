@@ -14,7 +14,10 @@ class SignUpScreenProviderNotifier extends _$SignUpScreenProviderNotifier {
     return Profile(
       email: '',
       name: '',
+      age: '',
+      position: '',
       teamName: '',
+      teamAdmin: false,
       profileImageUrl: '',
       fcmToken: '',
       createdAt: DateTime.now(),
@@ -23,6 +26,14 @@ class SignUpScreenProviderNotifier extends _$SignUpScreenProviderNotifier {
 
   void setName(String name) {
     state = state.copyWith(name: name);
+  }
+
+  void setAge(String age) {
+    state = state.copyWith(age: age);
+  }
+
+  void setPosition(String position) {
+    state = state.copyWith(position: position);
   }
 
   void setProfileImageUrl(String profileImageUrl) {
@@ -47,5 +58,9 @@ class SignUpScreenProviderNotifier extends _$SignUpScreenProviderNotifier {
 
   void setTeamName(String teamName) {
     state = state.copyWith(teamName: teamName);
+  }
+
+  void setTeamAdmin(bool teamAdmin) {
+    state = state.copyWith(teamAdmin: teamAdmin);
   }
 }

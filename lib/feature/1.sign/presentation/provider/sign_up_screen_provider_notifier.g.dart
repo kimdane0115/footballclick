@@ -7,7 +7,7 @@ part of 'sign_up_screen_provider_notifier.dart';
 // **************************************************************************
 
 String _$signUpScreenProviderNotifierHash() =>
-    r'48ea611f488e123453decde30f628eea4eb3d096';
+    r'5e5843c943e7c1b1eb70a5890d5500658f881e17';
 
 /// See also [SignUpScreenProviderNotifier].
 @ProviderFor(SignUpScreenProviderNotifier)

@@ -2,7 +2,7 @@ import 'package:footballclick/core/constants/enums.dart';
 import 'package:footballclick/feature/1.sign/presentation/provider/sign_up_screen_provider_notifier.dart';
 
 import '../../../../core/constants/index.dart';
-import '../../../5.team/presentation/provider/team_register_notifier.dart';
+// import '../../../5.team/presentation/provider/team_register_notifier.dart';
 
 class SignUpAdminScreen extends ConsumerStatefulWidget {
   const SignUpAdminScreen({super.key});
@@ -87,6 +87,11 @@ class _SignUpAdminScreenState extends ConsumerState<SignUpAdminScreen> {
                   label: Text(AdminKind.values[index].name),
                   selected: _value == index,
                   onSelected: (bool selected) {
+                    if (index == 0) {
+                      ref.read(signUpScreenProviderNotifierProvider.notifier).setTeamAdmin(true);
+                    } else {
+                      ref.read(signUpScreenProviderNotifierProvider.notifier).setTeamAdmin(false);
+                    }
                     setState(() {
                       _value = selected ? index : null;
                     });
@@ -111,6 +116,9 @@ class _SignUpAdminScreenState extends ConsumerState<SignUpAdminScreen> {
                   onSelected: (bool selected) {
                     setState(() {
                       _valueAge = selected ? index : null;
+                      ref
+                          .read(signUpScreenProviderNotifierProvider.notifier)
+                          .setAge(MemberAge.values[index].name);
                     });
                   },
                 );
@@ -133,6 +141,9 @@ class _SignUpAdminScreenState extends ConsumerState<SignUpAdminScreen> {
                   onSelected: (bool selected) {
                     setState(() {
                       _valuePosition = selected ? index : null;
+                      ref
+                          .read(signUpScreenProviderNotifierProvider.notifier)
+                          .setPosition(PlayerPosition.values[index].name);
                     });
                   },
                 );
@@ -145,6 +156,9 @@ class _SignUpAdminScreenState extends ConsumerState<SignUpAdminScreen> {
             child: ElevatedButton(
               onPressed: () {
                 print('>>>> teamName : ${ref.read(signUpScreenProviderNotifierProvider).teamName}');
+                print('>>>> teamAdmin : ${ref.read(signUpScreenProviderNotifierProvider).teamAdmin}');
+                print('>>>> Age : ${ref.read(signUpScreenProviderNotifierProvider).age}');
+                print('>>>> playerPosition : ${ref.read(signUpScreenProviderNotifierProvider).position}');
                 // const HomeScreenRoute().go(context);
                 // final request = {
                 //   'name': nameController.text,
