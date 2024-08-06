@@ -31,6 +31,20 @@ enum MemberAge {
   final String name;
 }
 
+enum MemberAgeMax {
+  one('10대'),
+  two('20대'),
+  three('30대'),
+  four('40대'),
+  five('50대'),
+  six('60대 이상');
+
+  // three('총무');
+
+  const MemberAgeMax(this.name);
+  final String name;
+}
+
 enum PlayerPosition {
   one('포워드'),
   two('윙'),
