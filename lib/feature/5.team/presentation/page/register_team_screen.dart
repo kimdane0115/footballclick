@@ -2,7 +2,7 @@ import 'package:footballclick/feature/5.team/presentation/provider/team_async_no
 import 'package:footballclick/feature/5.team/presentation/provider/team_register_notifier.dart';
 
 import '../../../../core/constants/enums.dart';
-import '../../../../core/constants/index.dart';
+import '../../../../index.dart';
 
 class RegisterTeamScreen extends ConsumerStatefulWidget {
   const RegisterTeamScreen({super.key});

@@ -7,7 +7,7 @@ import 'package:footballclick/feature/2.home/presentation/widget/team_ranking_wi
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-import '../../../../core/constants/index.dart';
+import '../../../../index.dart';
 import '../../../1.sign/presentation/provider/supabase_auth_provider.async_notifier.dart';
 import '../../domain/entities/member.dart';
 import '../../domain/entities/player.dart';

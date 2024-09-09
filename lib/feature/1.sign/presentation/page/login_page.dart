@@ -6,7 +6,7 @@ import 'package:footballclick/feature/1.sign/presentation/provider/supabase_auth
 // import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-import '../../../../core/constants/index.dart';
+import '../../../../index.dart';
 // import '../provider/supabase_auth_provider.async_notifier.dart';
 import '../widget/show_loadingIndicator.dart';
 

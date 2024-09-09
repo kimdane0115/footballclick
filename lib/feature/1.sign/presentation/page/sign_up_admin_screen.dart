@@ -1,7 +1,7 @@
 import 'package:footballclick/core/constants/enums.dart';
 import 'package:footballclick/feature/1.sign/presentation/provider/sign_up_screen_provider_notifier.dart';
 
-import '../../../../core/constants/index.dart';
+import '../../../../index.dart';
 // import '../../../5.team/presentation/provider/team_register_notifier.dart';
 
 class SignUpAdminScreen extends ConsumerStatefulWidget {

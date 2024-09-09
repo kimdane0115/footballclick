@@ -6,7 +6,7 @@ export 'package:flutter/material.dart';
 export 'package:go_router/go_router.dart';
 export 'package:flutter_riverpod/flutter_riverpod.dart';
 
-export '../../config/routers/routers.dart';
-export '../../config/theme/themes.dart';
+export 'config/routers/routers.dart';
+export 'config/theme/themes.dart';
 
-export 'build_context_extension.dart';
+export 'core/constants/build_context_extension.dart';

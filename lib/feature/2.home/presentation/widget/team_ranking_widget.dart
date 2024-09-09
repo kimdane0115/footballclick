@@ -1,6 +1,6 @@
 import 'package:footballclick/core/constants/build_context_extension.dart';
 
-import '../../../../core/constants/index.dart';
+import '../../../../index.dart';
 
 class TeamRankingWidget extends StatelessWidget {
   const TeamRankingWidget(

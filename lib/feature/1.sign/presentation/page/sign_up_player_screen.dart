@@ -1,6 +1,6 @@
 import 'package:footballclick/feature/1.sign/presentation/provider/supabase_auth_provider.async_notifier.dart';
 import 'package:footballclick/feature/2.home/presentation/provider/player_async_notifier.dart';
-import '../../../../core/constants/index.dart';
+import '../../../../index.dart';
 
 class SignUpPlayerScreen extends ConsumerStatefulWidget {
   const SignUpPlayerScreen({super.key});

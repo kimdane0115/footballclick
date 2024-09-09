@@ -3,7 +3,7 @@ import 'package:footballclick/feature/1.sign/presentation/provider/sign_up_scree
 import 'package:footballclick/feature/5.team/presentation/provider/team_async_notifier.dart';
 // import 'package:footballclick/feature/5.team/presentation/provider/team_register_notifier.dart';
 
-import '../../../../core/constants/index.dart';
+import '../../../../index.dart';
 
 class FindTeamScreen extends ConsumerStatefulWidget {
   const FindTeamScreen({super.key});

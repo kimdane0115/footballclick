@@ -1,6 +1,6 @@
 import 'package:footballclick/core/constants/build_context_extension.dart';
 
-import '../../../../core/constants/index.dart';
+import '../../../../index.dart';
 
 class TeamMatchDayWidget extends StatelessWidget {
   const TeamMatchDayWidget({super.key});

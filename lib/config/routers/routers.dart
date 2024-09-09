@@ -1,5 +1,5 @@
 
-import '../../core/constants/index.dart';
+import '../../index.dart';
 import '../../feature/1.sign/presentation/page/login_page.dart';
 import '../../feature/1.sign/presentation/page/sign_up_admin_screen.dart';
 import '../../feature/1.sign/presentation/page/sign_up_player_screen.dart';
