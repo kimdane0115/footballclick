@@ -1,4 +1,6 @@
 
+import '../../core/widgets/web_view_screen.dart';
+import '../../feature/1.sign/presentation/page/sign_up_agreement_screen.dart';
 import '../../index.dart';
 import '../../feature/1.sign/presentation/page/login_page.dart';
 import '../../feature/1.sign/presentation/page/sign_up_admin_screen.dart';
@@ -29,9 +31,11 @@ class Routers {
 
   static const String registerTeam = '/register_team';
   static const String findTeam = '/find_team';
+  static const String webViewScreen = '/web_view_screen';
 
   // 2 depth routes
   static const String signUp = 'sign_up';
+  static const String signUpAgreement = 'sign_up_agreement';
   static const String signUpAdmin = 'sign_up_admin';
   static const String signUpPlayer = 'sign_up_player';
 }
@@ -52,6 +56,9 @@ class SplashRoute extends GoRouteData {
   routes: [
     TypedGoRoute<SignUpScreenRoute>(
       path: Routers.signUp,
+    ),
+    TypedGoRoute<SignUpAgreementScreenRoute>(
+      path: Routers.signUpAgreement,
     ),
     TypedGoRoute<SignUpAdminScreenRoute>(
       path: Routers.signUpAdmin,
@@ -75,6 +82,15 @@ class SignUpScreenRoute extends GoRouteData {
   @override
   Page<void> buildPage(BuildContext context, GoRouterState state) {
     return const MaterialPage(child: SignUpScreen());
+  }
+}
+
+class SignUpAgreementScreenRoute extends GoRouteData {
+  const SignUpAgreementScreenRoute();
+
+  @override
+  Page<void> buildPage(BuildContext context, GoRouterState state) {
+    return const MaterialPage(child: SignUpAgreementScreen());
   }
 }
 
@@ -207,6 +223,26 @@ class FindTeamScreenRoute extends GoRouteData {
     return const MaterialPage(
       child: FindTeamScreen(),
       name: Routers.findTeam,
+    );
+  }
+}
+
+@TypedGoRoute<WebViewScreenRoute>(
+  path: Routers.webViewScreen,
+)
+class WebViewScreenRoute extends GoRouteData {
+  const WebViewScreenRoute({required this.uri, required this.title});
+
+  // static final GlobalKey<NavigatorState> $parentNavigatorKey = rootNavigatorKey;
+
+  final String uri;
+  final String title;
+
+  @override
+  Page<void> buildPage(BuildContext context, GoRouterState state) {
+    return const MaterialPage(
+      child: WebViewScreen(),
+      name: Routers.webViewScreen,
     );
   }
 }

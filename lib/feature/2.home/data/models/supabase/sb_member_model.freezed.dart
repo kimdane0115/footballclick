@@ -26,8 +26,12 @@ mixin _$SbMemberModel {
   String get profileImageUrl => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
 
+  /// Serializes this SbMemberModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SbMemberModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SbMemberModelCopyWith<SbMemberModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -56,6 +60,8 @@ class _$SbMemberModelCopyWithImpl<$Res, $Val extends SbMemberModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SbMemberModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -114,6 +120,8 @@ class __$$SbMemberModelImplCopyWithImpl<$Res>
       _$SbMemberModelImpl _value, $Res Function(_$SbMemberModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SbMemberModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -193,12 +201,14 @@ class _$SbMemberModelImpl implements _SbMemberModel {
                 other.createdAt == createdAt));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, name, fcmToken, profileImageUrl, createdAt);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SbMemberModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SbMemberModelImplCopyWith<_$SbMemberModelImpl> get copyWith =>
@@ -233,8 +243,11 @@ abstract class _SbMemberModel implements SbMemberModel {
   String get profileImageUrl;
   @override
   DateTime get createdAt;
+
+  /// Create a copy of SbMemberModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SbMemberModelImplCopyWith<_$SbMemberModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

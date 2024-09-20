@@ -27,8 +27,12 @@ mixin _$SbTeamModel {
   DateTime get updatedAt => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
 
+  /// Serializes this SbTeamModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SbTeamModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SbTeamModelCopyWith<SbTeamModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -58,6 +62,8 @@ class _$SbTeamModelCopyWithImpl<$Res, $Val extends SbTeamModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SbTeamModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -122,6 +128,8 @@ class __$$SbTeamModelImplCopyWithImpl<$Res>
       _$SbTeamModelImpl _value, $Res Function(_$SbTeamModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SbTeamModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -211,12 +219,14 @@ class _$SbTeamModelImpl implements _SbTeamModel {
                 other.createdAt == createdAt));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, id, teamName, region, memberCount, updatedAt, createdAt);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SbTeamModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SbTeamModelImplCopyWith<_$SbTeamModelImpl> get copyWith =>
@@ -254,8 +264,11 @@ abstract class _SbTeamModel implements SbTeamModel {
   DateTime get updatedAt;
   @override
   DateTime get createdAt;
+
+  /// Create a copy of SbTeamModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SbTeamModelImplCopyWith<_$SbTeamModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

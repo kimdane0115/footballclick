@@ -30,8 +30,12 @@ mixin _$SbProfileModel {
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
 
+  /// Serializes this SbProfileModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SbProfileModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SbProfileModelCopyWith<SbProfileModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -64,6 +68,8 @@ class _$SbProfileModelCopyWithImpl<$Res, $Val extends SbProfileModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SbProfileModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -146,6 +152,8 @@ class __$$SbProfileModelImplCopyWithImpl<$Res>
       _$SbProfileModelImpl _value, $Res Function(_$SbProfileModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SbProfileModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -263,12 +271,14 @@ class _$SbProfileModelImpl implements _SbProfileModel {
                 other.updatedAt == updatedAt));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, email, name, profileImageUrl,
       accessToken, idToken, fcmToken, createdAt, updatedAt);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SbProfileModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SbProfileModelImplCopyWith<_$SbProfileModelImpl> get copyWith =>
@@ -316,8 +326,11 @@ abstract class _SbProfileModel implements SbProfileModel {
   DateTime get createdAt;
   @override
   DateTime get updatedAt;
+
+  /// Create a copy of SbProfileModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SbProfileModelImplCopyWith<_$SbProfileModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

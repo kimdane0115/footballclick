@@ -88,7 +88,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    _googleSignIn();
+                    // _googleSignIn();
+                    const SignUpAgreementScreenRoute().push(context);
                   },
                   child: const Text('GOGGLE 로그인'),
                 ),

@@ -21,11 +21,11 @@ class App extends ConsumerWidget {
     
     return MaterialApp.router(
       routerConfig: router,
-      // theme: ThemeData(
-      //   useMaterial3: true,
-      //   primarySwatch: Colors.blue,
-      // ),
-      theme: lightThemeData(lightColorScheme, context),
+      theme: ThemeData(
+        useMaterial3: true,
+        primarySwatch: Colors.blue,
+      ),
+      // theme: lightThemeData(lightColorScheme, context),
       builder: (context, child) {
         Widget actualChild = _flavorBanner(
           child: child!,

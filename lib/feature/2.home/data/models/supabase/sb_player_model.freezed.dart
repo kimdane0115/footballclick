@@ -31,8 +31,12 @@ mixin _$SbPlayerModel {
   DateTime get updatedAt => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
 
+  /// Serializes this SbPlayerModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SbPlayerModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SbPlayerModelCopyWith<SbPlayerModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -66,6 +70,8 @@ class _$SbPlayerModelCopyWithImpl<$Res, $Val extends SbPlayerModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SbPlayerModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -154,6 +160,8 @@ class __$$SbPlayerModelImplCopyWithImpl<$Res>
       _$SbPlayerModelImpl _value, $Res Function(_$SbPlayerModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SbPlayerModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -280,12 +288,14 @@ class _$SbPlayerModelImpl implements _SbPlayerModel {
                 other.createdAt == createdAt));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, teamId, teamName, name,
       number, position, joindate, block, updatedAt, createdAt);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SbPlayerModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SbPlayerModelImplCopyWith<_$SbPlayerModelImpl> get copyWith =>
@@ -335,8 +345,11 @@ abstract class _SbPlayerModel implements SbPlayerModel {
   DateTime get updatedAt;
   @override
   DateTime get createdAt;
+
+  /// Create a copy of SbPlayerModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SbPlayerModelImplCopyWith<_$SbPlayerModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

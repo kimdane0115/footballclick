@@ -12,6 +12,7 @@ List<RouteBase> get $appRoutes => [
       $tabScreenShell,
       $registerTeamScreenRoute,
       $findTeamScreenRoute,
+      $webViewScreenRoute,
     ];
 
 RouteBase get $splashRoute => GoRouteData.$route(
@@ -43,6 +44,10 @@ RouteBase get $loginPageRoute => GoRouteData.$route(
         GoRouteData.$route(
           path: 'sign_up',
           factory: $SignUpScreenRouteExtension._fromState,
+        ),
+        GoRouteData.$route(
+          path: 'sign_up_agreement',
+          factory: $SignUpAgreementScreenRouteExtension._fromState,
         ),
         GoRouteData.$route(
           path: 'sign_up_admin',
@@ -79,6 +84,24 @@ extension $SignUpScreenRouteExtension on SignUpScreenRoute {
 
   String get location => GoRouteData.$location(
         '/login/sign_up',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $SignUpAgreementScreenRouteExtension on SignUpAgreementScreenRoute {
+  static SignUpAgreementScreenRoute _fromState(GoRouterState state) =>
+      const SignUpAgreementScreenRoute();
+
+  String get location => GoRouteData.$location(
+        '/login/sign_up_agreement',
       );
 
   void go(BuildContext context) => context.go(location);
@@ -239,6 +262,36 @@ extension $FindTeamScreenRouteExtension on FindTeamScreenRoute {
 
   String get location => GoRouteData.$location(
         '/find_team',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $webViewScreenRoute => GoRouteData.$route(
+      path: '/web_view_screen',
+      factory: $WebViewScreenRouteExtension._fromState,
+    );
+
+extension $WebViewScreenRouteExtension on WebViewScreenRoute {
+  static WebViewScreenRoute _fromState(GoRouterState state) =>
+      WebViewScreenRoute(
+        uri: state.uri.queryParameters['uri']!,
+        title: state.uri.queryParameters['title']!,
+      );
+
+  String get location => GoRouteData.$location(
+        '/web_view_screen',
+        queryParams: {
+          'uri': uri,
+          'title': title,
+        },
       );
 
   void go(BuildContext context) => context.go(location);
