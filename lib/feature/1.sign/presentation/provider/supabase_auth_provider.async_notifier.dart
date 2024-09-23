@@ -26,6 +26,7 @@ class SupaBaseAuthAsyncNotifier extends _$SupaBaseAuthAsyncNotifier {
       }
 
       final GoogleSignInAccount? googleUser = await GoogleSignIn(
+        scopes: ["profile", "email"],
         clientId: '257746472366-nis9odkp8hnm80lkpmuvg2jefs7dgq2j.apps.googleusercontent.com',
         serverClientId: '257746472366-i63jfjv30f9avq3vp12723gmap541lgh.apps.googleusercontent.com',
       ).signIn();
