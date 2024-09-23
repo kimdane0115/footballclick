@@ -44,7 +44,11 @@ class _LoginPageState extends ConsumerState<LoginPage> {
             if (value == null) return;
 
             if (value.accessToken!.isEmpty) {
-              _signUp();
+              const SignUpAgreementScreenRoute().push(context).then((value) {
+                if (value == true) {
+                  _signUp();
+                }
+              });
             } else {
               await Supabase.instance.client.auth.signInWithIdToken(
                 provider: OAuthProvider.google,
@@ -88,8 +92,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    // _googleSignIn();
-                    const SignUpAgreementScreenRoute().push(context);
+                    _googleSignIn();
+                    // const SignUpAgreementScreenRoute().push(context);
                   },
                   child: const Text('GOGGLE 로그인'),
                 ),

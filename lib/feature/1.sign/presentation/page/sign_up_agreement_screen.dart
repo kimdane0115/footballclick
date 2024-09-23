@@ -71,7 +71,7 @@ class _SignUpAgreementScreenState extends ConsumerState<SignUpAgreementScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('회원가입 동의'),
+        title: const Text('회원가입 동의'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -83,13 +83,13 @@ class _SignUpAgreementScreenState extends ConsumerState<SignUpAgreementScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       '회원가입을 위해 아래 약관에 동의해주세요.',
                       style: TextStyle(fontSize: 16),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     CheckboxListTile(
-                      title: Text('이용약관에 동의합니다.'),
+                      title: const Text('이용약관에 동의합니다.'),
                       value: _isTermsAccepted,
                       onChanged: (bool? value) {
                         setState(() {
@@ -97,16 +97,16 @@ class _SignUpAgreementScreenState extends ConsumerState<SignUpAgreementScreen> {
                         });
                       },
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     GestureDetector(
                       onTap: () {
                         setState(() {
                           _isExpanded1 = !_isExpanded1;
                         });
                       },
-                      child: Align(
+                      child: const Align(
                         alignment: Alignment.centerRight,
-                        child: const Text('자세히 보기'),
+                        child: Text('자세히 보기'),
                       ),
                     ),
                     // AnimatedContainer(
@@ -120,22 +120,22 @@ class _SignUpAgreementScreenState extends ConsumerState<SignUpAgreementScreen> {
                     //   ),
                     // ),
                     AnimatedContainer(
-                      duration: Duration(milliseconds: 300), // 애니메이션 지속 시간
+                      duration: const Duration(milliseconds: 300), // 애니메이션 지속 시간
                       curve: Curves.easeInOut, // 애니메이션 커브
                       // curve: Curves.bounceIn, // 애니메이션 커브
                       height: _isExpanded1 ? _expandedHeight : _collapsedHeight, // 높이 조정
                       child: SingleChildScrollView(
                         child: Text(
                           _fullText1, // 항상 전체 텍스트를 사용
-                          style: TextStyle(fontSize: 16.0),
+                          style: const TextStyle(fontSize: 16.0),
                           softWrap: true,
                           overflow: TextOverflow.fade, // 텍스트가 넘칠 때 페이드
                         ),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     CheckboxListTile(
-                      title: Text('개인정보 처리방침에 동의합니다.'),
+                      title: const Text('개인정보 처리방침에 동의합니다.'),
                       value: _isPrivacyPolicyAccepted,
                       onChanged: (bool? value) {
                         setState(() {
@@ -143,27 +143,27 @@ class _SignUpAgreementScreenState extends ConsumerState<SignUpAgreementScreen> {
                         });
                       },
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     GestureDetector(
                       onTap: () {
                         setState(() {
                           _isExpanded2 = !_isExpanded2;
                         });
                       },
-                      child: Align(
+                      child: const Align(
                         alignment: Alignment.centerRight,
-                        child: const Text('자세히 보기'),
+                        child: Text('자세히 보기'),
                       ),
                     ),
                     AnimatedContainer(
-                      duration: Duration(milliseconds: 300), // 애니메이션 지속 시간
+                      duration: const Duration(milliseconds: 300), // 애니메이션 지속 시간
                       curve: Curves.easeInOut, // 애니메이션 커브
                       // curve: Curves.bounceIn, // 애니메이션 커브
                       height: _isExpanded2 ? _expandedHeight : _collapsedHeight, // 높이 조정
                       child: SingleChildScrollView(
                         child: Text(
                           _privacyPolicy, // 항상 전체 텍스트를 사용
-                          style: TextStyle(fontSize: 16.0),
+                          style: const TextStyle(fontSize: 16.0),
                           softWrap: true,
                           overflow: TextOverflow.fade, // 텍스트가 넘칠 때 페이드
                         ),
@@ -193,31 +193,32 @@ class _SignUpAgreementScreenState extends ConsumerState<SignUpAgreementScreen> {
                             showDialog(
                               context: context,
                               builder: (context) => AlertDialog(
-                                title: Text('동의 완료'),
-                                content: Text('회원가입 동의가 완료되었습니다.'),
+                                title: const Text('동의 완료'),
+                                content: const Text('회원가입 동의가 완료되었습니다.'),
                                 actions: [
                                   TextButton(
                                     onPressed: () {
                                       Navigator.of(context).pop();
+                                      context.pop(true);
                                     },
-                                    child: Text('확인'),
+                                    child: const Text('확인'),
                                   ),
                                 ],
                               ),
                             );
                           }
                         : null,
-                    child: Text('동의'),
+                    child: const Text('동의'),
                   ),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 Expanded(
                   child: OutlinedButton(
                     onPressed: () {
                       // 취소 버튼 클릭 시 처리 로직
                       Navigator.of(context).pop();
                     },
-                    child: Text('취소'),
+                    child: const Text('취소'),
                   ),
                 ),
               ],
